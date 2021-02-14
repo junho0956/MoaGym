@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {Provider} from 'react-redux';
 import store from './common/store';
+import Review from './shared/Review/Review';
 
 const Root = styled.div`
   position: relative;
@@ -13,7 +14,7 @@ function App(){
   return (
     <Root>
       <Provider store={store}>
-        
+        <Review />
       </Provider>
     </Root>
   );

@@ -3,7 +3,7 @@ export interface ReviewCardComponent {
     reviewImageUrl: string,
     reviewTitle: string,
     reviewDesc: string,
-    categoryTags: string,
+    categoryTags: string[],
     createdAt: string, // + timestamp
     autorInfo: string, // 미정
     likedCnt: number
