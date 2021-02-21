@@ -6,11 +6,12 @@ export enum PRODUCT_LIST_DIRECTION{
 export interface ProductListItemComponent{
     productId: string,
     productImageUrl: string,
-    productReviewCnt: number,
-    productTags: string[],
+    brandTitle: string
     productTitle: string,
     productPrice: number,
-    brandTitle: string
+    productReviewPoint: number,
+    productReviewCnt: number,
+    productTags: string[],
 }
 
 export interface ProductListComponent{
