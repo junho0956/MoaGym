@@ -14,7 +14,6 @@ function App(){
   return (
     <Root>
       <Provider store={store}>
-        <Review />
       </Provider>
     </Root>
   );
