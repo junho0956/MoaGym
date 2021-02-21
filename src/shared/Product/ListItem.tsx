@@ -9,11 +9,11 @@ import {
   ProductReview,
   UpperRight,
 } from './style'
-import ProductReviewCntImg from '../../common/image/ProductReviewCntImg.svg';
-import ProductReviewStarImg from '../../common/image/ProductReviewStarImg.svg';
-import badge1000 from '../../common/image/badge1000.svg';
-import badge100 from '../../common/image/badge100.svg'
-import Rectangle from '../../common/image/Rectangle.svg';
+import ProductReviewCntImg from './image/ProductReviewCntImg.svg';
+import ProductReviewStarImg from './image/ProductReviewStarImg.svg';
+import badge1000 from './image/badge1000.svg';
+import badge100 from './image/badge100.svg'
+import Rectangle from './image/Rectangle.svg';
 
 function ProductListItem({product}:{product:ProductListItemComponent}){
 
