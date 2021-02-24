@@ -9,6 +9,8 @@ body {
   justify-content: center;
   width:100vw;
   height:100vh;
+  background:lightgrey;
+  overflow:hidden;
 }
 
 code {

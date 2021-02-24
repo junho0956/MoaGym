@@ -19,7 +19,7 @@ function ProductListItem({product}:{product:ProductListItemComponent}){
 
   return (
     <ProductItem >
-      <img src={product.productImageUrl} className="ProductImg"/>
+      <img src={product.productImageUrl[0]} className="ProductImg"/>
       {product.productReviewCnt > 99 &&
         (<UpperRight>
           {product.productReviewCnt > 999 ? <img src={badge1000}/> : <img src={badge100}/>}

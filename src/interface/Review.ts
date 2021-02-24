@@ -1,10 +1,13 @@
 export interface ReviewCardComponent {
     reviewId: string,
-    reviewImageUrl: string,
+    reviewImageUrl: string[],
     reviewTitle: string,
     reviewDesc: string,
     categoryTags: string[],
     createdAt: string, // + timestamp
     autorInfo: string, // 미정
-    likedCnt: number
+    likedCnt: number,
+    reviewPoint: number,
+    reviewProductSize: number,
+    reviewProductColor: string,
 }

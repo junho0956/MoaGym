@@ -1,27 +1,41 @@
-import {useSelector} from 'react-redux';
-import styled, {css} from 'styled-components';
+import {useEffect, useRef} from 'react';
 import {ReviewCardComponent} from '../../interface/Review';
-import {RootState} from '../../common/store';
+import {
+  ReviewComponent,
+  ReviewPhoto,
+  ReviewInfo,
+  ReviewStarPoint,
+} from './style';
+import {getReviewStarPoint} from '../../common/getReviewStarPoint';
+import rectangle from '../../common/image/Rectangle.svg';
 
 function ReviwItem({review}:{review:ReviewCardComponent}){
-    const reviewImage:string = review.reviewImageUrl;
+    const reviewImage:string[] = review.reviewImageUrl;
+    const reviewStarPointDOM = useRef(null);
+    useEffect(() => {
+      reviewStarPointDOM && getReviewStarPoint(reviewStarPointDOM, review.reviewPoint);
+    }, [review])
 
     return(
       <ReviewComponent image={reviewImage.length}>
-        {reviewImage.length > 0 && <ReviewPhoto><img src={reviewImage}/></ReviewPhoto>}
+        {reviewImage.length > 0 && <ReviewPhoto><img src={reviewImage[0]}/></ReviewPhoto>}
         <ReviewInfo>
-          <div className="reviewTitle">{review.reviewTitle}</div>
-          <div className="reviewText">{review.reviewDesc}</div>
+          <ReviewStarPoint ref={reviewStarPointDOM}></ReviewStarPoint>
+          <div className="reviewProductSizeTitle">사이즈</div>
+          <div className="reviewProductSize">{review.reviewProductSize}</div>
+          <img src={rectangle} className="reviewRectangle"></img>
+          <div className="reviewProductColorTitle">컬러</div>
+          <div className="reviewProductColor">{review.reviewProductColor}</div>
+          <div className="reviewDesc">{review.reviewDesc}</div>
           <span className="reviewCreateAt">{review.createdAt}</span>
-          <span className="reviewAutorInfo">{review.autorInfo}</span>
-          <span className="reviewLikedCnt">{review.likedCnt > 999 ? '999+' : review.likedCnt}</span>
+          <span className="reviewAutorInfo">{review.autorInfo[0]}***님</span>
+          <span className="reviewLikedCnt">+{review.likedCnt}</span>
         </ReviewInfo>
       </ReviewComponent>
     )
 }
 
-export default function Review(){
-  const reviewState:ReviewCardComponent[] = useSelector((state:RootState) => state.Review);
+export default function Review({reviewState}:{reviewState:ReviewCardComponent[]}){
   return (
     <>
       {reviewState.length > 0 && reviewState.map((review:ReviewCardComponent) => {
@@ -30,98 +44,3 @@ export default function Review(){
     </>
   );
 }
-
-const ReviewComponent = styled.div<{image:number}>`
-  position:relative;
-  left:0%;
-  right:0%;
-  top:0%;
-  bottom:0%;
-  background-color:#FFFFFF;
-  box-shadow: 0 4px 4px rgba(0,0,0,0.25);
-  border-radius:10px;
-  width:312px;
-  height: ${props => props.image > 0 ? `394px` : `168px`};
-`
-const ReviewPhoto = styled.div`
-  &>img{
-    width:312px;
-    height:226px;
-    border-radius: 10px 10px 0 0;
-  }
-`
-
-const ReviewInfo = styled.div`
-  position:absolute;
-  width:312px;
-  height:168px;
-  font-family: Spoqa Han Sans Neo;
-  font-style: normal;
-  letter-spacing: -0.003em;
-  color: #000000;
-
-  &>.reviewTitle{
-    position:absolute;
-    height:22px;
-    left:5.13%;
-    right:5.13%;
-    top:9.52%;
-    bottom:77.38%;
-    font-weight:bold;
-    font-size:16px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-  }
-
-  &>.reviewText{
-    position:absolute;
-    left:5.13%;
-    right:5.13%;
-    top:22.62%;
-    bottom:51.19%;
-    font-weight:normal;
-    font-size:14px;
-    height:44px;
-    line-height:22px;
-    display:-webkit-box;
-    -webkit-line-clamp:2;
-    -webkit-box-orient:vertical;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    word-break:break-all;
-  }
-  
-  &>.reviewCreateAt, &>.reviewAutorInfo{
-    position:absolute;
-    top:79.17%;
-    bottom:9.52%;
-    font-weight:normal;
-    font-size:12px;
-    line-height:19px;
-    opacity:0.5;
-  }
-  &>.reviewCreateAt{
-    left:5.13%;
-    right:73.08%;
-  }
-  &>.reviewAutorInfo{
-    left:29.49%;
-    right:52.56%;
-  }
-
-  &>.reviewLikedCnt{
-    position:absolute;
-    left:76.6%;
-    right:14.1%;
-    top:79.17%;
-    bottom:9.52%;
-    font-style:normal;
-    font-weight:normal;
-    font-size:12px;
-    line-height:19px;
-    text-align:right;
-    letter-spacing:0.004em;
-    color:#FF701D;
-  }
-`

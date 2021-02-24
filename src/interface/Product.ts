@@ -5,7 +5,7 @@ export enum PRODUCT_LIST_DIRECTION{
 
 export interface ProductListItemComponent{
     productId: string,
-    productImageUrl: string,
+    productImageUrl: string[],
     brandTitle: string
     productTitle: string,
     productPrice: number,
