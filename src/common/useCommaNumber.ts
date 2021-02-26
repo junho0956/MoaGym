@@ -5,7 +5,7 @@ export function useCommaNumber(number:number):string[]{
     for(let i = 0; i<reverseNumber.length; i++){
         resultNumber += reverseNumber[i];
         pos++;
-        if(pos == 3 && i+1<reverseNumber.length){
+        if(pos === 3 && i+1<reverseNumber.length){
             pos = 0;
             resultNumber += ',';
         }

@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
 export const CategoryContainer = styled.div`
-    position:absolute;
+    position:relative;
     width:360px;
     height:91px;
     left:0px;
-    top:101px;
 `;
 
 export const CategoryUl = styled.ul`

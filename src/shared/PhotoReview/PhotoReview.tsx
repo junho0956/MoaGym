@@ -1,3 +1,5 @@
+import {useEffect, useRef} from 'react';
+import {applyOnMouse} from '../../common/applyOnMouse';
 import {ReviewCardComponent} from '../../interface/Review';
 import reviewStarImg from './image/reviewStarImg.svg';
 import rectangleImg from './image/Rectangle.svg';
@@ -28,23 +30,29 @@ function PhotoReviewItem({item}:{item:ReviewCardComponent}){
 
 }
 
-function PhotoReview({itemList}:{itemList:ReviewCardComponent[]}){
+function PhotoReview({itemList, initSize}:{itemList:ReviewCardComponent[], initSize:number}){
 
     itemList.sort(function(a:ReviewCardComponent,b:ReviewCardComponent):number{
         return a.createdAt < b.createdAt ? 1 : a.createdAt > b.createdAt ? -1 : 0; 
     })
+
+    const wrap = useRef<HTMLUListElement>(null);
     
-    const itemList4th:ReviewCardComponent[] = [];
-    for(let i = 0; i<itemList.length && itemList4th.length<4; i++){
+    const itemListArray:ReviewCardComponent[] = [];
+    for(let i = 0; i<itemList.length && itemListArray.length<initSize; i++){
         if(itemList[i].reviewImageUrl.length>0){
-            itemList4th.push(itemList[i]);
+            itemListArray.push(itemList[i]);
         }
     }
 
+    useEffect(() => {
+        wrap && applyOnMouse(wrap);
+    },[]);
+
     return(
         <PhotoReviewContainer>
-            <PhotoReviewUl>
-                {itemList4th.map((item:ReviewCardComponent) => {
+            <PhotoReviewUl ref={wrap}>
+                {itemListArray.map((item:ReviewCardComponent) => {
                     return(
                         <PhotoReviewLi key={item.reviewId}>
                             <PhotoReviewItem item={item} />

@@ -74,7 +74,7 @@ export const SlideWrap = styled.div`
     /* top:88px; */
     /* transform: matrix(-1,0,0,1,0,0); */
 
-    &>.slideLeftBtn{
+    &>.ItemInfoslideLeftBtn{
         position:absolute;
         left:16px;
         z-index:9999;
@@ -82,7 +82,7 @@ export const SlideWrap = styled.div`
         transform:translate(0, -50%);
     }
 
-    &>.slideRightBtn{
+    &>.ItemInfoslideRightBtn{
         position:absolute;
         right:16px;
         z-index:9999;
@@ -103,7 +103,10 @@ export const SlideUl = styled.ul`
 `;
 
 export const SlideLi = styled.li`
-    
+    &>img{
+        width:360px;
+        height:360px;
+    }
 `;
 
 export const SlidePointWrap = styled.div`
@@ -116,7 +119,7 @@ export const SlidePointWrap = styled.div`
     position: absolute;
     width: 100%;
     height: 6px;
-    top: 424px;
+    top: 368px;
 `;
 
 export const SlidePoint = styled.span`

@@ -2,16 +2,12 @@ import styled from 'styled-components';
 
 export const ProductItem = styled.div`
   position:relative;
-  left:0%;
-  right:0%;
-  top:0%;
-  bottom:0%;
   width:148px;
   height:246px;
   background-color:#FFFFFF;
   border-radius:10px;
-  margin:16px;
 
+  cursor: pointer;
   & > .ProductImg{
     position:absolute;
     left:0%;
@@ -179,16 +175,16 @@ export const ProductReviewCnt = styled.div`
 
 export const ProductListHorizontal = styled.div`
   position:relative;
+  margin:8px 0px;
 `;
 
 export const ProductListHorizontalUl = styled.ul`
-  position:absolute;
-  width:100%;
+  position:relative;
+  width:342px;
   white-space: nowrap;
-  padding:0;
-  margin:0;
+  padding:0px 0px 0px 18px;
+  margin:0px;
   overflow: auto;
-
   &::-webkit-scrollbar{
     display:none;
   }
@@ -198,21 +194,51 @@ export const ProductListHorizontalLi = styled.li`
   position:relative;
   list-style:none;
   display:inline-block;
+  margin-right:16px;
 `;
 
 export const ProductListVertical = styled.div`
   position:relative;
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  &:after{
-    content:"";
-    flex:auto;
-  }
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items:center;
+  margin-bottom:24px;
 `;
 
 export const ProductListVerticalItem = styled.div`
+  margin-top:24px;
+`;
+
+export const ProductTagWrap = styled.div`
+  position: absolute;
+  width: 114px;
+  height: 16px;
+  left: 0px;
+  top: 229.76px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+`;
+
+export const ProductTag = styled.span`
+  position: static;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  font-family:Spoqa Han Sans Neo, sans-serif;
+  font-size:10px;
+  line-height:14px;
+  letter-spacing:0.015em;
   
+  border: 0.5px solid #C1C1C1;
+  border-radius: 4px;
+  margin:0px 2px;
+  padding:0px 2px 0px 2px;
+  
+  color:#8B8B8B;
 `;
 
 export const UpperRight = styled.div`

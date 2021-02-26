@@ -1,11 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { ItemInfoComponent } from '../../interface/ItemInfo';
+import {nodragImage} from '../../common/nodragImage';
 import PhotoReview from '../../shared/PhotoReview/PhotoReview';
 import Review from '../../shared/Review/Review';
 import {
     ItemInfoContainer,
-    TitleBar,
-    TitleBarTitle,
     SlideWrap,
     SlideContainer,
     SlideUl,
@@ -32,15 +31,17 @@ import {slider} from '../../common/slider';
 import {useCommaNumber} from '../../common/useCommaNumber';
 import {getReviewStarPoint} from '../../common/getReviewStarPoint';
 import { ReviewCardComponent } from '../../interface/Review';
-import arrow_back from './image/arrow_back.svg';
 import leftBtn from './image/btn_itemdetail_left.svg';
 import rightBtn from './image/btn_itemdetail_right.svg';
 import reviewArrow from './image/icn_arrow_right_small.svg';
 import pickPhotoReview from './image/pickPhotoReview.svg';
 import starrateTitle from './image/starrateTitle.svg';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../common/store';
 
-function ItemInfo({product}:{product:ItemInfoComponent}){
+function ItemInfo(){
 
+    const product:ItemInfoComponent = useSelector((state:RootState) => state.ItemInfo);
     const slideWrap = useRef<HTMLDivElement>(null);
     const slidePoint = useRef<HTMLDivElement>(null);
     const reviewStar = useRef<HTMLDivElement>(null);
@@ -71,10 +72,12 @@ function ItemInfo({product}:{product:ItemInfoComponent}){
         }
     }
 
+    useEffect(() => nodragImage(), []);
+
     useEffect(() => {
-        slideWrap && slider(slideWrap, slidePoint);
-        reviewStar && getReviewStarPoint(reviewStar, product.productReviewPoint);
-        reviewStarDetail && getReviewStarPoint(reviewStarDetail, product.productReviewPoint);
+        slideWrap && slider(slideWrap, 360, slidePoint);
+        reviewStar && getReviewStarPoint(reviewStar, product.productItem.productReviewPoint);
+        reviewStarDetail && getReviewStarPoint(reviewStarDetail, product.productItem.productReviewPoint);
         (reviewStarDetail.current as HTMLDivElement)
         .childNodes.forEach(item => {
             (item as HTMLImageElement).style.width = '36px';
@@ -84,33 +87,29 @@ function ItemInfo({product}:{product:ItemInfoComponent}){
 
     return(
         <ItemInfoContainer>
-            <TitleBar>
-                <img src={arrow_back}/>
-                <TitleBarTitle>운동복 상세 정보</TitleBarTitle>
-            </TitleBar>
             <SlideWrap ref={slideWrap}>
-                <img src={leftBtn} className="slideLeftBtn"/>
-                <img src={rightBtn} className="slideRightBtn"/>
+                <img src={leftBtn} className="ItemInfoslideLeftBtn"/>
+                <img src={rightBtn} className="ItemInfoslideRightBtn"/>
                 <SlideContainer>
                     <SlideUl>
-                        {product.productImageUrl.map((item:string, index) => {
+                        {product.productItem.productImageUrl.map((item:string, index) => {
                             return(
                             <SlideLi key={index}>
-                                <img src={item}/>
+                                <img src={item} alt="ItemInfo_img"/>
                             </SlideLi>)
                         })}
                     </SlideUl>
                 </SlideContainer>
             </SlideWrap>
             <SlidePointWrap ref={slidePoint}>
-                {product.productImageUrl.map((index) => {
+                {product.productItem.productImageUrl.map((index) => {
                     return <SlidePoint key={index}/>
                 })}
             </SlidePointWrap>
-            <BrandTitle>{product.brandTitle}</BrandTitle>
-            <ProductTitle>{product.productTitle}</ProductTitle>
+            <BrandTitle>{product.productItem.brandTitle}</BrandTitle>
+            <ProductTitle>{product.productItem.productTitle}</ProductTitle>
             <ProductTagWrap>
-                {product.productTags.map((tag:string, index) => {
+                {product.productItem.productTags.map((tag:string, index) => {
                     return(
                         <ProductTag key={index}>
                             <ProductTagLabel>{tag}</ProductTagLabel>
@@ -118,22 +117,22 @@ function ItemInfo({product}:{product:ItemInfoComponent}){
                     )
                 })}
             </ProductTagWrap>
-            <ProductPrice>{useCommaNumber(product.productPrice)}원</ProductPrice>
+            <ProductPrice>{useCommaNumber(product.productItem.productPrice)}원</ProductPrice>
             <ItemInfoLine />
             <StarRate_Item_ReviewStar ref={reviewStar}/>
             <ProductReview>
-                <span className="ItemInfoProductReviewCnt">{useCommaNumber(product.productReviewCnt)}개</span>
+                <span className="ItemInfoProductReviewCnt">{useCommaNumber(product.productItem.productReviewCnt)}개</span>
                 <span>의 후기를 모았어요.</span>
                 <img src={reviewArrow} />
             </ProductReview>
             <img src={pickPhotoReview} className="pickPhotoReview" />
-            <PhotoReview itemList={product.productReview}></PhotoReview>
+            <PhotoReview itemList={product.productReview} initSize={4}></PhotoReview>
             <div className="ItemInfoContainerRectangle1"/>
             <StarRate_ItemDetail>
                 <img src={starrateTitle} className="starrateTitle"/>
-                <StarRate_ItemDetail_ReviewCnt>{useCommaNumber(product.productReviewCnt)}개</StarRate_ItemDetail_ReviewCnt>
+                <StarRate_ItemDetail_ReviewCnt>{useCommaNumber(product.productItem.productReviewCnt)}개</StarRate_ItemDetail_ReviewCnt>
                 <StarRate_ItemDetail_ReviewStar ref={reviewStarDetail}/>
-                <StarRate_ItemDetail_ReviewPoint>{product.productReviewPoint}</StarRate_ItemDetail_ReviewPoint>
+                <StarRate_ItemDetail_ReviewPoint>{product.productItem.productReviewPoint}</StarRate_ItemDetail_ReviewPoint>
             </StarRate_ItemDetail>
             <div className="ItemInfoPL">
                 <Popularity ref={popular} onClick={() => changeProductReview(true)}>인기순</Popularity>

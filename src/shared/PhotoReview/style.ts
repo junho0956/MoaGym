@@ -11,10 +11,10 @@ export const PhotoReviewContainer = styled.div`
 
 export const PhotoReviewUl = styled.ul`
     position:absolute;
-    padding:0;
+    padding:0px 0px 0px 24px;
     margin:0;
     height:223px;
-    width:360px;
+    width:336px;
 
     white-space:nowrap;
     overflow-x:auto;
@@ -28,7 +28,7 @@ export const PhotoReviewLi = styled.li`
     position:relative;
     list-style:none;
     display:inline-block;
-    margin-left:16px;
+    margin-right:16px;
     height:223px;
 `;
 
@@ -36,7 +36,7 @@ export const PhotoReviewItemContainer = styled.div`
     position:relative;
     width:126px;
     height:223px;
-
+    cursor: pointer;
     &>.photoReviewItemImg{
         position:absolute;
         width:126px;

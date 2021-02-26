@@ -7,33 +7,42 @@ import {
   ProductPrice,
   ProductReviewPoint,
   ProductReview,
+  ProductTagWrap,
+  ProductTag,
   UpperRight,
 } from './style'
+import {useCommaNumber} from '../../common/useCommaNumber';
 import ProductReviewCntImg from './image/ProductReviewCntImg.svg';
 import ProductReviewStarImg from './image/ProductReviewStarImg.svg';
 import badge1000 from './image/badge1000.svg';
 import badge100 from './image/badge100.svg'
 import Rectangle from './image/Rectangle.svg';
+import { ItemInfoComponent } from '../../interface/ItemInfo';
 
-function ProductListItem({product}:{product:ProductListItemComponent}){
+function ProductListItem({product}:{product:ItemInfoComponent}){
 
   return (
     <ProductItem >
-      <img src={product.productImageUrl[0]} className="ProductImg"/>
-      {product.productReviewCnt > 99 &&
+      <img src={product.productItem.productImageUrl[0]} className="ProductImg"/>
+      {product.productItem.productReviewCnt > 99 &&
         (<UpperRight>
-          {product.productReviewCnt > 999 ? <img src={badge1000}/> : <img src={badge100}/>}
+          {product.productItem.productReviewCnt > 999 ? <img src={badge1000}/> : <img src={badge100}/>}
         </UpperRight>)}
-      <BrandTitle>{product.brandTitle}</BrandTitle>
-      <ProductTitle>{product.productTitle}</ProductTitle>
-      <ProductPrice>{product.productPrice}원</ProductPrice>
+      <BrandTitle>{product.productItem.brandTitle}</BrandTitle>
+      <ProductTitle>{product.productItem.productTitle}</ProductTitle>
+      <ProductPrice>{useCommaNumber(product.productItem.productPrice)}원</ProductPrice>
       <img src={ProductReviewStarImg} className="ProductReviewStar"/>
-      <ProductReviewPoint>{product.productReviewPoint}</ProductReviewPoint>
+      <ProductReviewPoint>{product.productItem.productReviewPoint}</ProductReviewPoint>
       <img src={Rectangle} className="Rectangle"/>
       <ProductReview>
         <img src={ProductReviewCntImg}/>
-        <ProductReviewCnt>{product.productReviewCnt}</ProductReviewCnt>
+        <ProductReviewCnt>{useCommaNumber(product.productItem.productReviewCnt)}</ProductReviewCnt>
       </ProductReview>
+      <ProductTagWrap>
+        {product.productItem.productTags.map((tag:string, index)=>{
+          return(<ProductTag key={index}>{tag}</ProductTag>)
+        })}
+      </ProductTagWrap>
     </ProductItem>
   );
 }
