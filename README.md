@@ -39,12 +39,12 @@ sharedComponent
 
 ### screenshot
 
-<img src="./src/common/image/home1.PNG" padding="16">
-<img src="./src/common/image/home2.PNG" padding="16">
-<img src="./src/common/image/category1.PNG" padding="16">
-<img src="./src/common/image/category2.PNG" padding="16">
-<img src="./src/common/image/item1.PNG" padding="16">
-<img src="./src/common/image/item2.PNG" padding="16">
+<img src="./src/common/image/home1.PNG" width="70%">
+<img src="./src/common/image/home2.PNG" width="70%">
+<img src="./src/common/image/category1.PNG" width="70%">
+<img src="./src/common/image/category2.PNG" width="70%">
+<img src="./src/common/image/item1.PNG" width="70%">
+<img src="./src/common/image/item2.PNG" width="70%">
 
 ### try
 
