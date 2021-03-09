@@ -27,4 +27,4 @@
 |김현우|Design|
 |김병준|Backend|
 |이채윤|Backend|
-* [Backend](https://github.com/dnd-mentee-4th/dnd-mentee-4th-7-frontend)
+* [Backend](https://github.com/dnd-mentee-4th/dnd-mentee-4th-7-backend)
