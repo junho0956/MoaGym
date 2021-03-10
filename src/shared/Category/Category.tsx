@@ -11,7 +11,7 @@ import {
 import { changeCategory, categoryItem, category_Item_Type } from './state';
 import {applyOnMouse} from '../../common/applyOnMouse';
 
-function Category(){
+export const Category = () => {
 
     const wrap = useRef<HTMLUListElement>(null);
     const category = useSelector((state:RootState) => state.Category);
@@ -40,5 +40,3 @@ function Category(){
     )
 
 }
-
-export default Category;

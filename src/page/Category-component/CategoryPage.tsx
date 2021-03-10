@@ -10,7 +10,7 @@ import { RootState } from '../../common/store';
 import { categoryItem, category_Item_Type, changeCategory } from '../../shared/Category/state';
 import store from '../../common/store';
 
-export const CategoryCollection = () => {
+export const CategoryPage = () => {
 
     const history = useHistory();
     const {pathname} = useLocation();

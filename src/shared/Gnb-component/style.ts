@@ -28,6 +28,6 @@ export const GNBLabel = styled.p`
   font-weight: normal;
   font-size: 12px;
   line-height: 19px;
-  color: ${(props: { selected: boolean }) => props.selected ? '#FF701D' : '#555555'};
+  color: #555555;
   margin: 0;
 `

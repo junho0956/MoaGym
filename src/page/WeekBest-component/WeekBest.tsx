@@ -1,4 +1,6 @@
-import Product from '../../shared/Product/List';
+import {
+    ProductList
+} from '../../shared/Product/List';
 import {useHistory, useLocation} from 'react-router-dom';
 import {PRODUCT_LIST_DIRECTION} from '../../interface/Product';
 import { CategoryRectangle } from '../Category-component/style';
@@ -12,7 +14,7 @@ export const WeekBestPage = () => {
     return(
         <>  
             <CategoryRectangle />
-            <Product product={ItemInfo_TC} direction={PRODUCT_LIST_DIRECTION.VERTICAL}/>
+            <ProductList product={ItemInfo_TC} direction={PRODUCT_LIST_DIRECTION.VERTICAL}/>
         </>
     )
 

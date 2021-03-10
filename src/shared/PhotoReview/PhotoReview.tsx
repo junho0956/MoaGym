@@ -13,7 +13,7 @@ import {
     PhotoReviewItemText,
 } from './style';
 
-function PhotoReviewItem({item}:{item:ReviewCardComponent}){
+export const PhotoReviewItem = ({item}:{item:ReviewCardComponent}) => {
 
     return(
         <PhotoReviewItemContainer>
@@ -30,7 +30,7 @@ function PhotoReviewItem({item}:{item:ReviewCardComponent}){
 
 }
 
-function PhotoReview({itemList, initSize}:{itemList:ReviewCardComponent[], initSize:number}){
+export const PhotoReview = ({itemList, initSize}:{itemList:ReviewCardComponent[], initSize:number}) => {
 
     itemList.sort(function(a:ReviewCardComponent,b:ReviewCardComponent):number{
         return a.createdAt < b.createdAt ? 1 : a.createdAt > b.createdAt ? -1 : 0; 
@@ -64,5 +64,3 @@ function PhotoReview({itemList, initSize}:{itemList:ReviewCardComponent[], initS
     )
 
 }
-
-export default PhotoReview;

@@ -16,8 +16,10 @@ export const GNBItemComponent = ({item}: {item: IGnb}) => {
 
   return (
     <GNBItem onClick={() => onClickItem(item.id, item.link, pathname)}>
-      <img src={item.selected ? item.icon[1] : item.icon[0]} alt="gnb-icon"/>
-      <GNBLabel selected={item.selected}>{item.label}</GNBLabel>
+      {/* <img src={item.selected ? item.icon[1] : item.icon[0]} alt="gnb-icon"/> */}
+      <img src={item.icon} alt="gnb-icon"/>
+      {/* <GNBLabel selected={item.selected}>{item.label}</GNBLabel> */}
+      <GNBLabel>{item.label}</GNBLabel>
     </GNBItem>
   )
 }

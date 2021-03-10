@@ -1,4 +1,4 @@
-import {ProductListItemComponent} from '../../interface/Product';
+import {useRef, useEffect} from 'react';
 import {
   ProductItem,
   ProductReviewCnt,
@@ -18,11 +18,37 @@ import badge1000 from './image/badge1000.svg';
 import badge100 from './image/badge100.svg'
 import Rectangle from './image/Rectangle.svg';
 import { ItemInfoComponent } from '../../interface/ItemInfo';
+import {useHistory} from 'react-router-dom'; 
+import store from '../../common/store';
+import {setProduct} from '../../page/ItemInfo/state';
 
 function ProductListItem({product}:{product:ItemInfoComponent}){
 
+  const item_ref = useRef<HTMLDivElement>(null);
+  const move = useRef(true);
+  const history = useHistory();
+
+  useEffect(() => {
+    if(item_ref){
+      item_ref.current?.addEventListener('mousedown', e => {
+        move.current = false;
+      })
+      item_ref.current?.addEventListener('mousemove', e => {
+        move.current = true;
+      })
+      item_ref.current?.addEventListener('mouseup', e => {
+        if(!move.current){
+          move.current = true;
+          history.push('/product');
+          store.dispatch(setProduct(product));
+        }
+      })
+    }
+  }, [])
+
+
   return (
-    <ProductItem >
+    <ProductItem ref={item_ref}>
       <img src={product.productItem.productImageUrl[0]} className="ProductImg"/>
       {product.productItem.productReviewCnt > 99 &&
         (<UpperRight>

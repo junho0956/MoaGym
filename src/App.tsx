@@ -1,20 +1,24 @@
 import styled from 'styled-components';
 import {Provider} from 'react-redux';
 import store from './common/store';
+import Logo from './common/image/TitleBar_logo.svg';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
 
-import Category from './shared/Category/Category';
-import { GNBMainComponent } from './components/Gnb-component/GnbMain';
-import { HomePage } from './page/Home-component/Home';
-import { CategoryCollection } from './page/Category-component/CategoryPage';
-import { WeekBestPage } from './page/WeekBest-component/WeekBest';
-import Logo from './common/image/TitleBar_logo.svg';
-import { CategoryDetail } from './page/CategoryDetail-component/CategoryDetail';
-import ItemInfo from './page/ItemInfo/ItemInfo';
+import {
+  GNBMainComponent,
+} from './shared';
+
+import {
+  CategoryPage,
+  CategoryDetailPage,
+  HomePage,
+  ItemInfoPage,
+  WeekBestPage,
+} from './page';
 
 const Root = styled.div`
   position: relative;
@@ -39,7 +43,7 @@ const AppContainer = styled.div`
   &::-webkit-scrollbar{
     display:none;
   }
-  `
+`
 
 function App(){
 
@@ -47,11 +51,11 @@ function App(){
     <Root>
       <Provider store={store}>
         <Router>
-          {/* TOP HEADER CONTAINER */}
+
           <HeaderContainer>
             <img src={Logo} alt="titlebar_Logo"/>
           </HeaderContainer>
-          {/* APP CONTAINER */}
+
           <AppContainer>
             <Switch>
               <Route exact path="/">
@@ -61,23 +65,25 @@ function App(){
 
               </Route>
               <Route exact path="/category">
-                <CategoryCollection />
+                <CategoryPage />
               </Route>
               <Route exact path="/community">
+
               </Route>
               <Route exact path='/weekbest'>
-                  <WeekBestPage />
+                <WeekBestPage />
               </Route>
               <Route exact path='/categoryDetail'>
-                  <CategoryDetail />
+                <CategoryDetailPage />
               </Route>
               <Route exact path='/product'>
-                  <ItemInfo />
+                <ItemInfoPage />
               </Route>
             </Switch>
           </AppContainer>
-          {/* BOTTOM GNB CONTAINER */}
+
           <GNBMainComponent />
+
         </Router>
       </Provider>
     </Root>

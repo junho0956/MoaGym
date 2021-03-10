@@ -35,7 +35,7 @@ function ReviwItem({review}:{review:ReviewCardComponent}){
     )
 }
 
-export default function Review({reviewState}:{reviewState:ReviewCardComponent[]}){
+export const Review = ({reviewState}:{reviewState:ReviewCardComponent[]}) => {
   return (
     <>
       {reviewState.length > 0 && reviewState.map((review:ReviewCardComponent) => {

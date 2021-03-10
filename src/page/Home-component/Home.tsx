@@ -2,8 +2,10 @@ import {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {useHistory, useLocation} from 'react-router-dom';
 import {nodragImage} from '../../common/nodragImage';
-import Product from '../../shared/Product/List'; 
-import PhotoReview from '../../shared/PhotoReview/PhotoReview';
+import {
+    ProductList,
+    PhotoReview,
+} from '../../shared';
 
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
@@ -86,7 +88,7 @@ export const HomePage = () => {
                 
             </HomeWeekBest>
 
-            <Product product={ItemInfo_TC} direction={PRODUCT_LIST_DIRECTION.HORIZONTAL}/>
+            <ProductList product={ItemInfo_TC} direction={PRODUCT_LIST_DIRECTION.HORIZONTAL}/>
 
             <PopularCategory>
                 <PopularCategoryTitle>

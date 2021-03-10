@@ -1,8 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { ItemInfoComponent } from '../../interface/ItemInfo';
 import {nodragImage} from '../../common/nodragImage';
-import PhotoReview from '../../shared/PhotoReview/PhotoReview';
-import Review from '../../shared/Review/Review';
+import {
+    PhotoReview,
+    Review,
+} from '../../shared'
 import {
     ItemInfoContainer,
     SlideWrap,
@@ -39,7 +41,7 @@ import starrateTitle from './image/starrateTitle.svg';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../common/store';
 
-function ItemInfo(){
+export const ItemInfoPage = () => {
 
     const product:ItemInfoComponent = useSelector((state:RootState) => state.ItemInfo);
     const slideWrap = useRef<HTMLDivElement>(null);
@@ -142,5 +144,3 @@ function ItemInfo(){
         </ItemInfoContainer>
     )
 }
-
-export default ItemInfo;

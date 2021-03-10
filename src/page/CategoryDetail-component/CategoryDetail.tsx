@@ -8,12 +8,14 @@ import {
 } from './style';
 import { RootState } from '../../common/store';
 import {categoryItem} from '../../shared/Category/state';
-import Category from '../../shared/Category/Category';
-import Product from '../../shared/Product/List';
 import { PRODUCT_LIST_DIRECTION } from '../../interface/Product';
 import {nodragImage} from '../../common/nodragImage';
+import {
+    Category,
+    ProductList,
+} from '../../shared';
 
-export const CategoryDetail = () => {
+export const CategoryDetailPage = () => {
 
     const categorys = useSelector((state:RootState) => state.Category);
     const SelectCategory = categorys.filter((item:categoryItem) => {
@@ -28,7 +30,7 @@ export const CategoryDetail = () => {
             <CategoryDetailWrap>
                 <CategoryDetailTitle>{SelectCategory[0].label}만 모아짐</CategoryDetailTitle>
                 <CategoryDetailItemWrap>
-                    <Product product={SelectCategory[0].data} direction={PRODUCT_LIST_DIRECTION.VERTICAL}/>
+                    <ProductList product={SelectCategory[0].data} direction={PRODUCT_LIST_DIRECTION.VERTICAL}/>
                 </CategoryDetailItemWrap>
             </CategoryDetailWrap>
         </CategoryDetailContainer>
