@@ -2,12 +2,12 @@ MoaGym
 ===
 MoaGym 은 무신사 같은 국내 의류 쇼핑몰처럼 헬스, 요가, 필라테스 등의 의류 만을 모아서 보여주자는 의미로 시작한 프로젝트입니다.
 
-[stack](#stack)
-[structure](#structure)
-[update](#update)
-[screenshot](#screenshot)
-[try](#try)
-[build](#buildWith)
+- [stack](#stack)
+- [structure](#structure)
+- [update](#update)
+- [screenshot](#screenshot)
+- [try](#try)
+- [build](#buildWith)
 
 ### stack
 
