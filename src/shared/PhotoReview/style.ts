@@ -100,6 +100,26 @@ export const PhotoReviewItemPoint = styled.div`
     color: #8B8B8B;
 `;
 
+export const PhotoReviewItemBrand = styled.div`
+    position: absolute;
+    width: 15px;
+    left: 40px;
+    top: 69.96%;
+    bottom: 22.87%;
+
+    font-family: Spoqa Han Sans Neo, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 16px;
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.015em;
+
+    color: #3D3D3D;
+`;
+
 export const PhotoReviewItemText = styled.div`
     position: absolute;
     width: 126px;

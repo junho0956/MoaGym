@@ -19,7 +19,7 @@ import socks from './image/socks.svg';
 import socksSelect from './image/socksSelect.svg';
 
 import { ItemInfoComponent } from '../../interface/ItemInfo';
-import { ItemInfo_TC, gymData, yogaData, topData } from '../../common/tc';
+// import { ItemInfo_TC, gymData, yogaData, topData } from '../../common/tc';
 
 export enum category_Item_Type{
     GYM,
@@ -36,7 +36,7 @@ export interface categoryItem {
     icon: string,
     selected: boolean,
     selectImg: string[],
-    data: ItemInfoComponent[],
+    data: ItemInfoComponent[] | undefined,
 }
 
 const changeCategoryType = 'CATEGORY/changeCategory' as const;
@@ -55,7 +55,7 @@ const initialState:categoryItem[] = [
         icon: category_gym,
         selected: false,
         selectImg: [gym, gymSelect],
-        data: gymData,
+        data: undefined,
     },
     {
         id: category_Item_Type.YOGA,
@@ -63,7 +63,7 @@ const initialState:categoryItem[] = [
         icon: category_yoga,
         selected: false,
         selectImg: [yoga, yogaSelect],
-        data: yogaData,
+        data: undefined,
     },
     {
         id: category_Item_Type.TOP,
@@ -71,7 +71,7 @@ const initialState:categoryItem[] = [
         icon: category_top,
         selected: false,
         selectImg: [top, topSelect],
-        data: topData,
+        data: undefined,
     },
     {
         id: category_Item_Type.LEGGINS,
@@ -79,7 +79,7 @@ const initialState:categoryItem[] = [
         icon: category_leggings,
         selected: false,
         selectImg: [leggings, leggingsSelect],
-        data: ItemInfo_TC,
+        data: undefined,
     },
     {
         id: category_Item_Type.BOTTOM,
@@ -87,7 +87,7 @@ const initialState:categoryItem[] = [
         icon: category_bottom,
         selected: false,
         selectImg: [bottom, bottomSelect],
-        data: ItemInfo_TC,
+        data: undefined,
     },
     {
         id: category_Item_Type.SOCKS,
@@ -95,7 +95,7 @@ const initialState:categoryItem[] = [
         icon: category_socks,
         selected: false,
         selectImg: [socks, socksSelect],
-        data: ItemInfo_TC,
+        data: undefined,
     },
 ]
 

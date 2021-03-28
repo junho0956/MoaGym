@@ -1,20 +1,22 @@
+import {useState, useEffect} from 'react';
+import {useSelector} from 'react-redux';
 import {
     ProductList
 } from '../../shared/Product/List';
-import {useHistory, useLocation} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import {PRODUCT_LIST_DIRECTION} from '../../interface/Product';
 import { CategoryRectangle } from '../Category-component/style';
-import {ItemInfo_TC} from '../../common/tc';
+import { ItemInfoComponent } from '../../interface/ItemInfo';
+import { RootState } from '../../common/store';
 
 export const WeekBestPage = () => {
-    
-    const history = useHistory();
-    const {pathname} = useLocation();
+
+    const ItemInfo = useSelector((state:RootState) => state.WeekBest);
 
     return(
         <>  
             <CategoryRectangle />
-            <ProductList product={ItemInfo_TC} direction={PRODUCT_LIST_DIRECTION.VERTICAL}/>
+            <ProductList product={ItemInfo} direction={PRODUCT_LIST_DIRECTION.VERTICAL}/>
         </>
     )
 

@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {applyOnMouse} from '../../common/applyOnMouse';
 import {ReviewCardComponent} from '../../interface/Review';
 import reviewStarImg from './image/reviewStarImg.svg';
@@ -11,19 +11,22 @@ import {
     PhotoReviewItemAuthor,
     PhotoReviewItemPoint,
     PhotoReviewItemText,
+    PhotoReviewItemBrand
 } from './style';
+import { nodragImage } from '../../common/nodragImage';
 
 export const PhotoReviewItem = ({item}:{item:ReviewCardComponent}) => {
-
+    
     return(
         <PhotoReviewItemContainer>
-            <img src={item.reviewImageUrl[0]} className="photoReviewItemImg"/>
+            <img src={item.reviewImageUrl[0].url} className="photoReviewItemImg"/>
             <PhotoReviewItemAuthor>
-                {item.autorInfo[0]}**님의 후기
+                {item.authorName[0]}**님의 후기
             </PhotoReviewItemAuthor>
             <img src={reviewStarImg} className="photoReviewItemStarImg"/>
             <PhotoReviewItemPoint>{item.reviewPoint}</PhotoReviewItemPoint>
             <img src={rectangleImg} className="photoReviewItemRectangleImg"/>
+            <PhotoReviewItemBrand>{item.brandName}</PhotoReviewItemBrand>
             <PhotoReviewItemText>{item.reviewDesc}</PhotoReviewItemText>
         </PhotoReviewItemContainer>
     )
@@ -31,10 +34,6 @@ export const PhotoReviewItem = ({item}:{item:ReviewCardComponent}) => {
 }
 
 export const PhotoReview = ({itemList, initSize}:{itemList:ReviewCardComponent[], initSize:number}) => {
-
-    itemList.sort(function(a:ReviewCardComponent,b:ReviewCardComponent):number{
-        return a.createdAt < b.createdAt ? 1 : a.createdAt > b.createdAt ? -1 : 0; 
-    })
 
     const wrap = useRef<HTMLUListElement>(null);
     
@@ -47,7 +46,8 @@ export const PhotoReview = ({itemList, initSize}:{itemList:ReviewCardComponent[]
 
     useEffect(() => {
         wrap && applyOnMouse(wrap);
-    },[]);
+        nodragImage();
+    },[itemList]);
 
     return(
         <PhotoReviewContainer>

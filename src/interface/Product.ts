@@ -4,14 +4,17 @@ export enum PRODUCT_LIST_DIRECTION{
 }
 
 export interface ProductListItemComponent{
-    productId: string,
-    productImageUrl: string[],
-    brandTitle: string
-    productTitle: string,
+    productId: number,
+    productName: string,
     productPrice: number,
+    brandName: string,
+    category: string, // 카테고리 구분할 때 필요
     productReviewPoint: number,
     productReviewCnt: number,
-    productTags: string[],
+    productSortByNew: number,
+    productImageUrl: {
+        url: string
+    }[],
 }
 
 export interface ProductListComponent{

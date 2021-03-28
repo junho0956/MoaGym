@@ -1,7 +1,7 @@
-import {useEffect} from 'react';
-import {Link} from 'react-router-dom';
-import {useHistory, useLocation} from 'react-router-dom';
-import {nodragImage} from '../../common/nodragImage';
+import {useEffect, useState} from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { nodragImage } from '../../common/nodragImage';
 import {
     ProductList,
     PhotoReview,
@@ -10,12 +10,9 @@ import {
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import { WeekBestPage } from '../WeekBest-component/WeekBest';
 import { BrandNewProduct } from '../../shared/BrandNewProduct/BrandNewProduct';
 
-import {productReview_TC, brand_TC, brandNewProduct_TC, brandtype} from '../../common/tc';
 import {PRODUCT_LIST_DIRECTION} from '../../interface/Product';
-import {ItemInfo_TC} from '../../common/tc';
 
 import banner1 from './image/banner1.svg';
 import banner2 from './image/banner2.svg';
@@ -44,6 +41,12 @@ import {
     RecommentBrandList,
     RecommendBrandItem,
 } from './style';
+import { ItemInfoComponent } from '../../interface/ItemInfo';
+import store, { RootState } from '../../common/store';
+import { brandDataType } from '../../hook/InitData';
+import { weekbestUpdate } from '../WeekBest-component/state';
+import { ReviewCardComponent } from '../../interface/Review';
+import { brandList, brandListType} from '../../hook/InitData';
 
 const Pcategory:string[] = [CGym, CYoga, CTop, CBottom];
 const settings = { // slick default settings
@@ -57,9 +60,55 @@ const settings = { // slick default settings
 export const HomePage = () => {
 
     const history = useHistory();
-    const { pathname } = useLocation();
+    const brand = useSelector((state:RootState) => state.BrandDataReducer);
+    const [weekbestInHomePage, setWeekbestInHomePage] = useState<ItemInfoComponent[]>([]);
+    const [photoReview, setPhotoReview] = useState<ReviewCardComponent[]>([]);
+    const [newProduct, setNewProduct] = useState<ItemInfoComponent[]>([]);
+    const [brandLists, setBrandLists] = useState<brandListType[]>([]);
 
-    useEffect(() => nodragImage(), []);
+    useEffect(() => {
+        if(brand.length > 0){
+            let weekbestItemcopy:ItemInfoComponent[] = [];
+            let photoReviewcopy:ReviewCardComponent[] = [];
+            let newProductcopy:ItemInfoComponent[] = [];
+            let brandListcopy:brandListType[] = [];
+            let brandcopy:{data:ItemInfoComponent[]}[] = [];
+            let weekbestInHomePagecopy:ItemInfoComponent[] = [];
+            
+            brand.forEach((item, index) => {
+                brandcopy.push({data:[]});
+                item.brandData.forEach(item => {
+                    brandcopy[index].data.push(item);
+                })
+            })
+            brandcopy.forEach(item => {
+                item.data.sort((a,b) => b.productReviewCnt - a.productReviewCnt);
+                weekbestItemcopy.push(item.data[0]);
+                weekbestItemcopy.push(item.data[1]);
+                weekbestInHomePagecopy.push(item.data[0]);
+            })
+            brand.forEach((item:brandDataType) => {
+                newProductcopy.push(item.brandData[0]);
+                item.brandData.forEach(brandItem => {
+                    brandItem.productReview.forEach(review => {
+                        if((review.reviewImageUrl as {url:string}[]).length > 0){
+                            photoReviewcopy.push(review);
+                        }
+                    })
+                })
+            })
+            photoReviewcopy.sort((a,b) => Math.random() - 0.5);
+            for(let i = 0; i<3; i++){
+                brandListcopy.push(brandList[i]);
+            }
+            
+            store.dispatch(weekbestUpdate(weekbestItemcopy, brandcopy));
+            setWeekbestInHomePage(weekbestInHomePagecopy);
+            setPhotoReview(photoReviewcopy);
+            setNewProduct(newProductcopy);
+            setBrandLists(brandListcopy);
+        }
+    }, [brand])
 
     return(
         <HomeContainer>
@@ -78,17 +127,17 @@ export const HomePage = () => {
             </SlideWrap>
 
             <HomeWeekBest>
-                <HomeWeekBestTitle>이번주 BEST</HomeWeekBestTitle>
-                <HomeWeekBestDesc>매주 금요일 갱신</HomeWeekBestDesc>
-                <Link to='/weekbest'>
-                    <MoreBtn>더보기</MoreBtn>
-                </Link>
-
-                {/* <MoreBtn onClick={() => {history.push(`${pathname}/weekbest`)}}>더보기</MoreBtn> */}
+                <HomeWeekBestTitle>BEST 상품</HomeWeekBestTitle>
+                {/* <HomeWeekBestDesc>매주 금요일 갱신</HomeWeekBestDesc> */}
+                <MoreBtn onClick={() => {
+                    history.push({
+                        pathname: `/weekbest`,
+                    })
+                }}>더보기</MoreBtn>
                 
             </HomeWeekBest>
 
-            <ProductList product={ItemInfo_TC} direction={PRODUCT_LIST_DIRECTION.HORIZONTAL}/>
+            <ProductList product={weekbestInHomePage} direction={PRODUCT_LIST_DIRECTION.HORIZONTAL}/>
 
             <PopularCategory>
                 <PopularCategoryTitle>
@@ -108,13 +157,13 @@ export const HomePage = () => {
 
             <HomeRectangle />
 
-            <BrandNewProduct products={brandNewProduct_TC}/>
+            <BrandNewProduct products={newProduct}/>
             <img src={noBrand} className="noBrandImg" alt="noBrandImg"/>
 
             <HomeRectangle />
 
             <PhotoReviewTitle>사진후기로 미리 입어보기</PhotoReviewTitle>
-            <PhotoReview itemList={productReview_TC} initSize={6}></PhotoReview>
+            <PhotoReview itemList={photoReview} initSize={10}></PhotoReview>
 
             <RecommendBrand>
                 <RecommendBrandTitle>
@@ -122,11 +171,11 @@ export const HomePage = () => {
                     <MoreBtn>더보기</MoreBtn>
                 </RecommendBrandTitle>
                 <RecommentBrandList>
-                    {brand_TC.map((item:brandtype) => {
+                    {brandLists.map((item:brandListType) => {
                         return(
-                            <RecommendBrandItem key={item.brandid}>
-                                <img src={item.brandProfileImage}/>
-                                <div>{item.brandName}</div>
+                            <RecommendBrandItem key={item.brandId}>
+                                <img src={item.brandImg}/>
+                                <div>{item.name}</div>
                             </RecommendBrandItem>
                         )
                     })}

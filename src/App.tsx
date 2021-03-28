@@ -1,7 +1,9 @@
+import {useEffect, useCallback} from 'react';
 import styled from 'styled-components';
 import {Provider} from 'react-redux';
 import store from './common/store';
 import Logo from './common/image/TitleBar_logo.svg';
+import { brandDataType, getInitData } from './hook/InitData';
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,6 +21,7 @@ import {
   ItemInfoPage,
   WeekBestPage,
 } from './page';
+import { initData } from './common/BrandDataReducer';
 
 const Root = styled.div`
   position: relative;
@@ -46,6 +49,15 @@ const AppContainer = styled.div`
 `
 
 function App(){
+
+  const getinitdata = useCallback(async() => {
+    const getdata = await getInitData();
+    store.dispatch(initData(getdata));
+  }, []);
+
+  useEffect(() => {
+    getinitdata();
+  },[]);
 
   return (
     <Root>

@@ -1,5 +1,4 @@
 import {ProductListItemComponent} from '../../interface/Product';
-import {productItem_TC} from '../../common/tc';
 
 const setProductType = 'PRODUCT/setProduct' as const; 
 

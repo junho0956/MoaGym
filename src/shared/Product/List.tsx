@@ -11,24 +11,22 @@ import {
 } from './style';
 import {applyOnMouse} from '../../common/applyOnMouse';
 import { ItemInfoComponent } from '../../interface/ItemInfo';
+import { nodragImage } from '../../common/nodragImage';
 
 export const ProductList = ({product, direction}:{product:ItemInfoComponent[] ,direction:PRODUCT_LIST_DIRECTION}) => {
 
     const ul = useRef<HTMLUListElement>(null);
 
     useEffect(() => {
+        nodragImage();
         ul && applyOnMouse(ul);
-    }, [])
-
-    useEffect(() => {
-        
     }, [product])
 
     return(
         direction === PRODUCT_LIST_DIRECTION.VERTICAL ? 
         (<ProductListVertical>
                 {product.map((product:ItemInfoComponent) => {
-                    return(<ProductListVerticalItem key={product.productItem.productId}>
+                    return(<ProductListVerticalItem key={product.productId}>
                         <ProductListItem product={product} />
                     </ProductListVerticalItem>)
                 })}
@@ -36,7 +34,7 @@ export const ProductList = ({product, direction}:{product:ItemInfoComponent[] ,d
         (<ProductListHorizontal>
             <ProductListHorizontalUl ref={ul}>
                 {product.map((product:ItemInfoComponent) => {
-                    return(<ProductListHorizontalLi key={product.productItem.productId}>
+                    return(<ProductListHorizontalLi key={product.productId}>
                         <ProductListItem product={product}/>
                     </ProductListHorizontalLi>)
                 })}

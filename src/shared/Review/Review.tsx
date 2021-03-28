@@ -10,26 +10,23 @@ import {getReviewStarPoint} from '../../common/getReviewStarPoint';
 import rectangle from '../../common/image/Rectangle.svg';
 
 function ReviwItem({review}:{review:ReviewCardComponent}){
-    const reviewImage:string[] = review.reviewImageUrl;
+    const reviewImage:{url:string}[] = review.reviewImageUrl;
     const reviewStarPointDOM = useRef(null);
+    console.log(review);
     useEffect(() => {
       reviewStarPointDOM && getReviewStarPoint(reviewStarPointDOM, review.reviewPoint);
     }, [review])
 
     return(
       <ReviewComponent image={reviewImage.length}>
-        {reviewImage.length > 0 && <ReviewPhoto><img src={reviewImage[0]}/></ReviewPhoto>}
+        {reviewImage.length > 0 && <ReviewPhoto><img src={reviewImage[0].url}/></ReviewPhoto>}
         <ReviewInfo>
           <ReviewStarPoint ref={reviewStarPointDOM}></ReviewStarPoint>
-          <div className="reviewProductSizeTitle">사이즈</div>
-          <div className="reviewProductSize">{review.reviewProductSize}</div>
+          <div className="reviewProductSizeTitle">{review.reviewOption}</div>
           <img src={rectangle} className="reviewRectangle"></img>
-          <div className="reviewProductColorTitle">컬러</div>
-          <div className="reviewProductColor">{review.reviewProductColor}</div>
           <div className="reviewDesc">{review.reviewDesc}</div>
-          <span className="reviewCreateAt">{review.createdAt}</span>
-          <span className="reviewAutorInfo">{review.autorInfo[0]}***님</span>
-          <span className="reviewLikedCnt">+{review.likedCnt}</span>
+          <span className="reviewCreateAt">{review.createdTime.substring(0, 10)}</span>
+          <span className="reviewAutorInfo">{review.authorName[0]}***님</span>
         </ReviewInfo>
       </ReviewComponent>
     )

@@ -49,25 +49,26 @@ function ProductListItem({product}:{product:ItemInfoComponent}){
 
   return (
     <ProductItem ref={item_ref}>
-      <img src={product.productItem.productImageUrl[0]} className="ProductImg"/>
-      {product.productItem.productReviewCnt > 99 &&
+      <img src={product.productImageUrl[0].url} className="ProductImg"/>
+      {product.productReviewCnt > 99 &&
         (<UpperRight>
-          {product.productItem.productReviewCnt > 999 ? <img src={badge1000}/> : <img src={badge100}/>}
+          {product.productReviewCnt > 999 ? <img src={badge1000}/> : <img src={badge100}/>}
         </UpperRight>)}
-      <BrandTitle>{product.productItem.brandTitle}</BrandTitle>
-      <ProductTitle>{product.productItem.productTitle}</ProductTitle>
-      <ProductPrice>{useCommaNumber(product.productItem.productPrice)}원</ProductPrice>
+      <BrandTitle>{product.brandName}</BrandTitle>
+      <ProductTitle>{product.productName}</ProductTitle>
+      <ProductPrice>{useCommaNumber(product.productPrice)}원</ProductPrice>
       <img src={ProductReviewStarImg} className="ProductReviewStar"/>
-      <ProductReviewPoint>{product.productItem.productReviewPoint}</ProductReviewPoint>
+      <ProductReviewPoint>{product.productReviewPoint}</ProductReviewPoint>
       <img src={Rectangle} className="Rectangle"/>
       <ProductReview>
         <img src={ProductReviewCntImg}/>
-        <ProductReviewCnt>{useCommaNumber(product.productItem.productReviewCnt)}</ProductReviewCnt>
+        <ProductReviewCnt>{useCommaNumber(product.productReviewCnt)}</ProductReviewCnt>
       </ProductReview>
       <ProductTagWrap>
-        {product.productItem.productTags.map((tag:string, index)=>{
+        {/* {product..map((tag:string, index)=>{
           return(<ProductTag key={index}>{tag}</ProductTag>)
-        })}
+        })} */}
+        <ProductTag>{product.category}</ProductTag>
       </ProductTagWrap>
     </ProductItem>
   );

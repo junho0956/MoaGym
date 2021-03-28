@@ -50,41 +50,38 @@ export const ItemInfoPage = () => {
     const reviewStarDetail = useRef<HTMLDivElement>(null);
     const popular = useRef<HTMLSpanElement>(null);
     const latest = useRef<HTMLSpanElement>(null);
-    const [productReview, setProductReview] = useState(product.productReview.concat()
-        .sort(function(a:ReviewCardComponent, b:ReviewCardComponent):number{
-            return a.likedCnt < b.likedCnt ? 1 : a.likedCnt > b.likedCnt ? -1 : 0;
-        }));
 
-    function changeProductReview(checked:boolean){
-        if(checked){ // true => popular
-            (popular.current as HTMLSpanElement).style.color = "#000000";
-            (latest.current as HTMLSpanElement).style.color = "#C1C1C1";
+    // function changeProductReview(checked:boolean){
+    //     if(checked){ // true => popular
+    //         (popular.current as HTMLSpanElement).style.color = "#000000";
+    //         (latest.current as HTMLSpanElement).style.color = "#C1C1C1";
             
-            setProductReview(product.productReview.concat().sort(function(a:ReviewCardComponent, b:ReviewCardComponent):number{
-                return a.likedCnt < b.likedCnt ? 1 : a.likedCnt > b.likedCnt ? -1 : 0;
-            }));
-        }
-        else{ // false => latest
-            (popular.current as HTMLSpanElement).style.color = "#C1C1C1";
-            (latest.current as HTMLSpanElement).style.color = "#000000";
+    //         setProductReview(product.productReview.concat().sort(function(a:ReviewCardComponent, b:ReviewCardComponent):number{
+    //             return a.likedCnt < b.likedCnt ? 1 : a.likedCnt > b.likedCnt ? -1 : 0;
+    //         }));
+    //     }
+    //     else{ // false => latest
+    //         (popular.current as HTMLSpanElement).style.color = "#C1C1C1";
+    //         (latest.current as HTMLSpanElement).style.color = "#000000";
 
-            setProductReview(product.productReview.concat().sort(function(a:ReviewCardComponent, b:ReviewCardComponent):number{
-                return a.createdAt < b.createdAt ? 1 : a.createdAt > b.createdAt ? -1 : 0;
-            }));
-        }
-    }
-
-    useEffect(() => nodragImage(), []);
+    //         setProductReview(product.productReview.concat().sort(function(a:ReviewCardComponent, b:ReviewCardComponent):number{
+    //             return a.createdTime < b.createdTime ? 1 : a.createdTime > b.createdTime ? -1 : 0;
+    //         }));
+    //     }
+    // }
 
     useEffect(() => {
-        slideWrap && slider(slideWrap, 360, slidePoint);
-        reviewStar && getReviewStarPoint(reviewStar, product.productItem.productReviewPoint);
-        reviewStarDetail && getReviewStarPoint(reviewStarDetail, product.productItem.productReviewPoint);
-        (reviewStarDetail.current as HTMLDivElement)
-        .childNodes.forEach(item => {
-            (item as HTMLImageElement).style.width = '36px';
-            (item as HTMLImageElement).style.height = '36px';
-        })
+        if(product.brandName !== 'brandName'){
+            console.log(product);
+            slideWrap && slider(slideWrap, 360, slidePoint);
+            reviewStar && getReviewStarPoint(reviewStar, product.productReviewPoint);
+            reviewStarDetail && getReviewStarPoint(reviewStarDetail, product.productReviewPoint);
+            (reviewStarDetail.current as HTMLDivElement)
+            .childNodes.forEach(item => {
+                (item as HTMLImageElement).style.width = '36px';
+                (item as HTMLImageElement).style.height = '36px';
+            })
+        }
     }, [product]);
 
     return(
@@ -94,36 +91,39 @@ export const ItemInfoPage = () => {
                 <img src={rightBtn} className="ItemInfoslideRightBtn"/>
                 <SlideContainer>
                     <SlideUl>
-                        {product.productItem.productImageUrl.map((item:string, index) => {
+                        {product.productImageUrl.map((item:{url:string}, index) => {
                             return(
                             <SlideLi key={index}>
-                                <img src={item} alt="ItemInfo_img"/>
+                                <img src={item.url} alt="ItemInfo_img"/>
                             </SlideLi>)
                         })}
                     </SlideUl>
                 </SlideContainer>
             </SlideWrap>
             <SlidePointWrap ref={slidePoint}>
-                {product.productItem.productImageUrl.map((index) => {
+                {product.productImageUrl.map((item:{url:string}, index) => {
                     return <SlidePoint key={index}/>
                 })}
             </SlidePointWrap>
-            <BrandTitle>{product.productItem.brandTitle}</BrandTitle>
-            <ProductTitle>{product.productItem.productTitle}</ProductTitle>
+            <BrandTitle>{product.brandName}</BrandTitle>
+            <ProductTitle>{product.productName}</ProductTitle>
             <ProductTagWrap>
-                {product.productItem.productTags.map((tag:string, index) => {
+                {/* {product..map((tag:string, index) => {
                     return(
                         <ProductTag key={index}>
                             <ProductTagLabel>{tag}</ProductTagLabel>
                         </ProductTag>
                     )
-                })}
+                })} */}
+                {<ProductTag>
+                    <ProductTagLabel>{product.category}</ProductTagLabel>
+                </ProductTag>}
             </ProductTagWrap>
-            <ProductPrice>{useCommaNumber(product.productItem.productPrice)}원</ProductPrice>
+            <ProductPrice>{useCommaNumber(product.productPrice)}원</ProductPrice>
             <ItemInfoLine />
             <StarRate_Item_ReviewStar ref={reviewStar}/>
             <ProductReview>
-                <span className="ItemInfoProductReviewCnt">{useCommaNumber(product.productItem.productReviewCnt)}개</span>
+                <span className="ItemInfoProductReviewCnt">{useCommaNumber(product.productReviewCnt)}개</span>
                 <span>의 후기를 모았어요.</span>
                 <img src={reviewArrow} />
             </ProductReview>
@@ -132,15 +132,15 @@ export const ItemInfoPage = () => {
             <div className="ItemInfoContainerRectangle1"/>
             <StarRate_ItemDetail>
                 <img src={starrateTitle} className="starrateTitle"/>
-                <StarRate_ItemDetail_ReviewCnt>{useCommaNumber(product.productItem.productReviewCnt)}개</StarRate_ItemDetail_ReviewCnt>
+                <StarRate_ItemDetail_ReviewCnt>{useCommaNumber(product.productReviewCnt)}개</StarRate_ItemDetail_ReviewCnt>
                 <StarRate_ItemDetail_ReviewStar ref={reviewStarDetail}/>
-                <StarRate_ItemDetail_ReviewPoint>{product.productItem.productReviewPoint}</StarRate_ItemDetail_ReviewPoint>
+                <StarRate_ItemDetail_ReviewPoint>{product.productReviewPoint}</StarRate_ItemDetail_ReviewPoint>
             </StarRate_ItemDetail>
-            <div className="ItemInfoPL">
+            {/* <div className="ItemInfoPL">
                 <Popularity ref={popular} onClick={() => changeProductReview(true)}>인기순</Popularity>
                 <Latest ref={latest} onClick={() => changeProductReview(false)}>최신순</Latest>
-            </div>
-            <Review reviewState={productReview}/>
+            </div> */}
+            <Review reviewState={product.productReview}/>
         </ItemInfoContainer>
     )
 }

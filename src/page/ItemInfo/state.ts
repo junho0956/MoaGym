@@ -1,5 +1,4 @@
 import { ItemInfoComponent } from '../../interface/ItemInfo';
-import { ItemInfo_TC } from '../../common/tc';
 const setProductType = 'ItemInfo/setProductType' as const;
 
 export const setProduct = (product:ItemInfoComponent) => (
@@ -9,7 +8,18 @@ export const setProduct = (product:ItemInfoComponent) => (
     }
 );
 
-const initialState:ItemInfoComponent = ItemInfo_TC[0];
+const initialState:ItemInfoComponent = {
+    brandName:"brandName",
+    category:"category",
+    productId:9999,
+    productImageUrl:[],
+    productName:"productName",
+    productPrice:9999,
+    productReview:[],
+    productReviewCnt:9999,
+    productReviewPoint:9999,
+    productSortByNew:9999,
+};
 
 type actionType = 
     ReturnType<typeof setProduct>;
