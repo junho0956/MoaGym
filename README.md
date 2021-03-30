@@ -64,8 +64,8 @@ sharedComponent
 ![home2](./src/common/image/img_home2.PNG)
 ![category1](./src/common/image/category1.PNG)
 ![category2](./src/common/image/category2.PNG)
-![itemInfo1](./src/common/image/img_itemInfo1.PNG)
-![itemInfo2](./src/common/image/img_itemInfo2.PNG)
+![itemInfo1](./src/common/image/img_ItemInfo1.PNG)
+![itemInfo2](./src/common/image/img_ItemInfo2.PNG)
 
 ### try
 <br>
