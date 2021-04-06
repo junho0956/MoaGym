@@ -7,6 +7,7 @@ import ItemInfo from '../page/ItemInfo/state';
 import BrandDataReducer from './BrandDataReducer';
 import WeekBest from '../page/WeekBest-component/state';
 
+
 const reducer = combineReducers(
     {
         Product,

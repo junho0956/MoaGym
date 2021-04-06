@@ -14,6 +14,7 @@ import {
     Category,
     ProductList,
 } from '../../shared';
+import { ItemInfoComponent } from '../../interface/ItemInfo';
 
 export const CategoryDetailPage = () => {
 
@@ -30,7 +31,7 @@ export const CategoryDetailPage = () => {
             <CategoryDetailWrap>
                 <CategoryDetailTitle>{SelectCategory[0].label}만 모아짐</CategoryDetailTitle>
                 <CategoryDetailItemWrap>
-                    {/* <ProductList product={SelectCategory[0].data} direction={PRODUCT_LIST_DIRECTION.VERTICAL}/> */}
+                    <ProductList product={(SelectCategory[0].data as ItemInfoComponent[])} direction={PRODUCT_LIST_DIRECTION.VERTICAL}/>
                 </CategoryDetailItemWrap>
             </CategoryDetailWrap>
         </CategoryDetailContainer>

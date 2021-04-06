@@ -14,13 +14,13 @@ import { BrandNewProduct } from '../../shared/BrandNewProduct/BrandNewProduct';
 
 import {PRODUCT_LIST_DIRECTION} from '../../interface/Product';
 
-import banner1 from './image/banner1.svg';
-import banner2 from './image/banner2.svg';
-import banner3 from './image/banner3.svg';
-import CBottom from './image/categoryBottom.svg';
-import CTop from './image/categoryTop.svg';
-import CYoga from './image/categoryYoga.svg';
-import CGym from './image/categoryGym.svg';
+import banner1 from './image/banner1.png';
+import banner2 from './image/banner2.png';
+import banner3 from './image/banner3.png';
+import CBottom from './image/categoryBottom.png';
+import CTop from './image/categoryTop.png';
+import CYoga from './image/categoryYoga.png';
+import CGym from './image/categoryGym.png';
 import noBrand from './image/noBrand.svg';
 
 import {
@@ -64,14 +64,14 @@ export const HomePage = () => {
     const [weekbestInHomePage, setWeekbestInHomePage] = useState<ItemInfoComponent[]>([]);
     const [photoReview, setPhotoReview] = useState<ReviewCardComponent[]>([]);
     const [newProduct, setNewProduct] = useState<ItemInfoComponent[]>([]);
-    const [brandLists, setBrandLists] = useState<brandListType[]>([]);
+    const [brandList, setBrandList] = useState<brandDataType[]>([]);
 
     useEffect(() => {
         if(brand.length > 0){
             let weekbestItemcopy:ItemInfoComponent[] = [];
             let photoReviewcopy:ReviewCardComponent[] = [];
             let newProductcopy:ItemInfoComponent[] = [];
-            let brandListcopy:brandListType[] = [];
+            let brandListcopy:brandDataType[] = [];
             let brandcopy:{data:ItemInfoComponent[]}[] = [];
             let weekbestInHomePagecopy:ItemInfoComponent[] = [];
             
@@ -99,14 +99,13 @@ export const HomePage = () => {
             })
             photoReviewcopy.sort((a,b) => Math.random() - 0.5);
             for(let i = 0; i<3; i++){
-                brandListcopy.push(brandList[i]);
+                brandListcopy.push(brand[i]);
             }
-            
             store.dispatch(weekbestUpdate(weekbestItemcopy, brandcopy));
             setWeekbestInHomePage(weekbestInHomePagecopy);
             setPhotoReview(photoReviewcopy);
             setNewProduct(newProductcopy);
-            setBrandLists(brandListcopy);
+            setBrandList(brandListcopy);
         }
     }, [brand])
 
@@ -168,14 +167,19 @@ export const HomePage = () => {
             <RecommendBrand>
                 <RecommendBrandTitle>
                     추천 국내 브랜드
-                    <MoreBtn>더보기</MoreBtn>
+                    <MoreBtn onClick={()=>{history.push('./brandlist')}}>더보기</MoreBtn>
                 </RecommendBrandTitle>
                 <RecommentBrandList>
-                    {brandLists.map((item:brandListType) => {
+                    {brandList.map((item:brandDataType) => {
                         return(
-                            <RecommendBrandItem key={item.brandId}>
+                            <RecommendBrandItem key={item.brandId} onClick={() => {
+                                history.push({
+                                    pathname: `brand/${item.brandName}`,
+                                    state:item.brandName,
+                                })
+                            }}>
                                 <img src={item.brandImg}/>
-                                <div>{item.name}</div>
+                                <div>{item.brandName}</div>
                             </RecommendBrandItem>
                         )
                     })}

@@ -33,7 +33,7 @@ export const GNBItemList: IGnb[] = [
   {
     id: GNB_ITEM_TYPE.BRAND,
     label: '브랜드',
-    link: '/brand',
+    link: '/brandlist',
     icon: Brand,
     selected: false
   },

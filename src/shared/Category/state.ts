@@ -5,21 +5,22 @@ import category_yoga from './image/category-yoga.png';
 import category_leggings from './image/category-leggings.png';
 import category_socks from './image/category-sock.png';
 
-import bottom from './image/bottom.svg';
-import bottomSelect from './image/bottomSelect.svg';
-import top from './image/top.svg';
-import topSelect from './image/topSelect.svg';
-import yoga from './image/yoga.svg';
-import yogaSelect from './image/yogaSelect.svg';
-import gym from './image/gym.svg';
-import gymSelect from './image/gymSelect.svg';
-import leggings from './image/leggings.svg';
-import leggingsSelect from './image/leggingsSelect.svg';
-import socks from './image/socks.svg';
-import socksSelect from './image/socksSelect.svg';
+import bottom from './image/bottom.png';
+import bottomSelect from './image/bottomSelect.png';
+import top from './image/top.png';
+import topSelect from './image/topSelect.png';
+import yoga from './image/yoga.png';
+import yogaSelect from './image/yogaSelect.png';
+import gym from './image/gym.png';
+import gymSelect from './image/gymSelect.png';
+import leggings from './image/leggings.png';
+import leggingsSelect from './image/leggingsSelect.png';
+import socks from './image/socks.png';
+import socksSelect from './image/Tab_category_socks.png';
 
 import { ItemInfoComponent } from '../../interface/ItemInfo';
-// import { ItemInfo_TC, gymData, yogaData, topData } from '../../common/tc';
+import { categoryDataType } from '../../hook/InitData';
+import _ from 'lodash';
 
 export enum category_Item_Type{
     GYM,
@@ -29,7 +30,7 @@ export enum category_Item_Type{
     LEGGINS,
     SOCKS,
 }
-
+                                               
 export interface categoryItem {
     id: category_Item_Type,
     label: string,
@@ -40,6 +41,14 @@ export interface categoryItem {
 }
 
 const changeCategoryType = 'CATEGORY/changeCategory' as const;
+const initCategoryDataType= 'CATEGORY/initCategory' as const;
+
+export const initCategory = (data:categoryDataType[]) => (
+    {
+        type: initCategoryDataType,
+        data,
+    }
+)
 
 export const changeCategory = (CID:category_Item_Type) => (
     {
@@ -100,10 +109,19 @@ const initialState:categoryItem[] = [
 ]
 
 type actionType = 
-    ReturnType<typeof changeCategory>;
+    ReturnType<typeof changeCategory> | ReturnType<typeof initCategory>;
 
 const reducer = (state = initialState, action:actionType) => {
     switch(action.type){
+        case initCategoryDataType:{
+            let newState = _.cloneDeep(state);
+            newState[0].data = action.data[0].categoryData;
+            newState[2].data = action.data[1].categoryData;
+            newState[4].data = action.data[2].categoryData;
+            newState[5].data = action.data[3].categoryData;
+            return newState;
+        }
+
         case changeCategoryType:
             return state.map((item:categoryItem)=> {
                 if(item.id == action.data){

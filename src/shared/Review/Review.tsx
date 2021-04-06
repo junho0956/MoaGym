@@ -12,7 +12,7 @@ import rectangle from '../../common/image/Rectangle.svg';
 function ReviwItem({review}:{review:ReviewCardComponent}){
     const reviewImage:{url:string}[] = review.reviewImageUrl;
     const reviewStarPointDOM = useRef(null);
-    console.log(review);
+    
     useEffect(() => {
       reviewStarPointDOM && getReviewStarPoint(reviewStarPointDOM, review.reviewPoint);
     }, [review])

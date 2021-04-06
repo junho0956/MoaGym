@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {Provider} from 'react-redux';
 import store from './common/store';
 import Logo from './common/image/TitleBar_logo.svg';
-import { brandDataType, getInitData } from './hook/InitData';
+import { getInitData, brandList } from './hook/InitData';
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,6 +22,11 @@ import {
   WeekBestPage,
 } from './page';
 import { initData } from './common/BrandDataReducer';
+import { getCategoryData } from './hook/getCategoryData';
+import { initCategory } from './shared/Category/state';
+import { BrandListPage } from './page/Brand/BrandList-page';
+import { BrandPage } from './page/Brand/BrandPage';
+
 
 const Root = styled.div`
   position: relative;
@@ -52,7 +57,9 @@ function App(){
 
   const getinitdata = useCallback(async() => {
     const getdata = await getInitData();
+    const categoryData = getCategoryData(getdata);
     store.dispatch(initData(getdata));
+    store.dispatch(initCategory(categoryData));
   }, []);
 
   useEffect(() => {
@@ -73,14 +80,14 @@ function App(){
               <Route exact path="/">
                 <HomePage />
               </Route>
-              <Route path="/brand">
-
+              <Route exact path="/brandlist">
+                <BrandListPage />
+              </Route>
+              <Route path="/brand/:bn">
+                <BrandPage />
               </Route>
               <Route exact path="/category">
                 <CategoryPage />
-              </Route>
-              <Route exact path="/community">
-
               </Route>
               <Route exact path='/weekbest'>
                 <WeekBestPage />

@@ -7,7 +7,7 @@ export const ReviewComponent = styled.div<{image:number}>`
   border: 1px solid #DFDFDF;
   border-radius:10px;
   width:312px;
-  margin:8px 0px 0px 24px;
+  margin: 16px 0px 0px 24px;
   height: ${props => props.image > 0 ? `394px` : `168px`};
 `
 export const ReviewPhoto = styled.div`

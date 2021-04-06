@@ -18,6 +18,7 @@ export const ProductList = ({product, direction}:{product:ItemInfoComponent[] ,d
     const ul = useRef<HTMLUListElement>(null);
 
     useEffect(() => {
+        console.log(product);
         nodragImage();
         ul && applyOnMouse(ul);
     }, [product])
