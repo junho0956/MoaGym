@@ -38,9 +38,9 @@ sharedComponent
     - add Page brandList, brandPage
         - brandList : 브랜드 리스트를 한눈에 확인할 수 있도록 Shared-ProductList의 vertical, horizontal 을 이용하여 표현
         - brandPage : 각 브랜드 페이지는 react-router-dom의 history를 통해서 brand/brandName 로 라우팅되고, location{pathname, state}를 통해서 주소에 맞는 브랜드 데이터를 처리하여 표현함, 브랜드 아이템에 대한 상품 및 리뷰를 한번에 볼 수 있도록 표현함
-    <br>
+    <br><br>
     - update Category Tag data : 각 브랜드 아이템들의 태그를 이용하여 데이터를 분류함  
-    <br>
+    <br><br>
     - fix Image : 기존에 사용하던 vector 이미지인 .svg 파일을 bitmap 이미지인 .png로 수정하여 속도 개선
     <br>
     - study
