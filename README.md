@@ -81,23 +81,23 @@ sharedComponent
 
 ### screenshot
 
-- homePage
+- homePage <br>
 ![home1](./src/common/image/img_home1.PNG)
-- homePage
+- homePage <br>
 ![home2](./src/common/image/img_home2.PNG)
-- categoryPage
+- categoryPage <br>
 ![category1](./src/common/image/category1.PNG)
-- categoryDetailPage
+- categoryDetailPage <br>
 ![category2](./src/common/image/category2.PNG)
-- itemInfoPage
+- itemInfoPage <br>
 ![itemInfo1](./src/common/image/img_ItemInfo1.PNG)
-- itemInfoPage
+- itemInfoPage <br>
 ![itemInfo2](./src/common/image/img_ItemInfo2.PNG)
-- brandListPage
+- brandListPage <br>
 ![brandList](./src/common/image/img_brandList.PNG)
-- brandPage(product)
+- brandPage(product) <br>
 ![brandPage1](./src/common/image/img_brandPage1.PNG)
-- brandPage(review)
+- brandPage(review) <br>
 ![brandPage2](./src/common/image/img_brandPage2.PNG)
 
 ### try
