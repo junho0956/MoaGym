@@ -55,6 +55,9 @@ sharedComponent
             - 처음에는 스크롤 이벤트 등록을 product props 가 변경될 때만 DOM에 추가해주면 된다고 생각했는데, 이렇게 하면 현재 사용할 상태값인 verticalProduct 가 product 에 의해 변경되어도 verticalProduct에 대한 최신 정보를 유지하지 못하기 때문이었다
             - 이 문제를 해결하는데 꽤 오랜 시간이 걸렸지만, 다시 한번 의존성 배열을 정확히 입력하는 것에 대한 중요성을 알아갈 수 있었다<div>
 
+        - 결과<div>
+            ![infinityscroll](./src/common/image/ezgif.com-gif-maker.gif)<div>
+
     - next todo
         - 오늘 구현한 Infinity slide 리뷰 컴포넌트에도 적용시키기(상)
         - 각 컴포넌트의 loading 화면 만들고 적용시키기(중)
