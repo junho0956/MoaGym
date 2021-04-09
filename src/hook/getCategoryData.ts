@@ -1,7 +1,7 @@
 
 import { brandDataType, categoryDataType } from "./InitData";
 
-// 현재 사용가능한 카테고리 => 짐웨어, 상의, 하의, 양말
+// 현재 사용가능한 카테고리 => 짐웨어, 상의, 하의, 양말, 요가복, 레깅스
 export function getCategoryData(brandData : brandDataType[]){
     let data:categoryDataType[] = [
         {
@@ -19,7 +19,15 @@ export function getCategoryData(brandData : brandDataType[]){
         {
             category: '양말',
             categoryData: [],
-        }
+        },
+        {
+            category: '요가복',
+            categoryData: [],
+        },
+        {
+            category: '레깅스',
+            categoryData: [],
+        },
     ];
     
     brandData.forEach(item => {
@@ -35,6 +43,12 @@ export function getCategoryData(brandData : brandDataType[]){
             }
             if(item.category === '양말'){
                 data[3].categoryData.push(item);
+            }
+            if(item.category === '요가복'){
+                data[4].categoryData.push(item);
+            }
+            if(item.category === '레깅스'){
+                data[5].categoryData.push(item);
             }
         })
     })

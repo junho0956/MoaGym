@@ -1,4 +1,4 @@
-import { brandDataType } from '../../hook/InitData';
+// import { brandDataType } from '../../hook/InitData';
 import {ItemInfoComponent} from '../../interface/ItemInfo';
 
 const weekbestType = "WEEKBESTTYPE" as const;

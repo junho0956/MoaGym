@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {Provider} from 'react-redux';
 import store from './common/store';
 import Logo from './common/image/TitleBar_logo.svg';
-import { getInitData, brandList } from './hook/InitData';
+import { getInitData } from './hook/InitData';
 import {
   BrowserRouter as Router,
   Switch,
@@ -49,7 +49,7 @@ const AppContainer = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   &::-webkit-scrollbar{
-    display:none;
+    /* display:none; */
   }
 `
 
@@ -75,7 +75,7 @@ function App(){
             <img src={Logo} alt="titlebar_Logo"/>
           </HeaderContainer>
 
-          <AppContainer>
+          <AppContainer id="AppContainer">
             <Switch>
               <Route exact path="/">
                 <HomePage />

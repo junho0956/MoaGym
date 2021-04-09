@@ -26,13 +26,13 @@ import {
     StarRate_ItemDetail_ReviewCnt,
     StarRate_ItemDetail_ReviewPoint,
     StarRate_ItemDetail_ReviewStar,
-    Popularity,
-    Latest,
+    // Popularity,
+    // Latest,
 } from './style';
 import {slider} from '../../common/slider';
 import {useCommaNumber} from '../../common/useCommaNumber';
 import {getReviewStarPoint} from '../../common/getReviewStarPoint';
-import { ReviewCardComponent } from '../../interface/Review';
+// import { ReviewCardComponent } from '../../interface/Review';
 import leftBtn from './image/btn_itemdetail_left.svg';
 import rightBtn from './image/btn_itemdetail_right.svg';
 import reviewArrow from './image/icn_arrow_right_small.svg';
@@ -48,8 +48,8 @@ export const ItemInfoPage = () => {
     const slidePoint = useRef<HTMLDivElement>(null);
     const reviewStar = useRef<HTMLDivElement>(null);
     const reviewStarDetail = useRef<HTMLDivElement>(null);
-    const popular = useRef<HTMLSpanElement>(null);
-    const latest = useRef<HTMLSpanElement>(null);
+    // const popular = useRef<HTMLSpanElement>(null);
+    // const latest = useRef<HTMLSpanElement>(null);
 
     // function changeProductReview(checked:boolean){
     //     if(checked){ // true => popular

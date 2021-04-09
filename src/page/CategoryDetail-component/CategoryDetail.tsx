@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+// import {useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {
     CategoryDetailContainer,
@@ -9,7 +9,7 @@ import {
 import { RootState } from '../../common/store';
 import {categoryItem} from '../../shared/Category/state';
 import { PRODUCT_LIST_DIRECTION } from '../../interface/Product';
-import {nodragImage} from '../../common/nodragImage';
+// import {nodragImage} from '../../common/nodragImage';
 import {
     Category,
     ProductList,
@@ -23,7 +23,7 @@ export const CategoryDetailPage = () => {
         if(item.selected) return item;
     });
 
-    useEffect(() => nodragImage() ,[]);
+    // useEffect(() => nodragImage() ,[categorys]);
 
     return (
         <CategoryDetailContainer>

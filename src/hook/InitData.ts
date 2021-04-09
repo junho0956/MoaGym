@@ -20,7 +20,7 @@ export interface categoryDataType{
 
 
 export let brandList:brandListType[] = [];
-let categoryData:categoryDataType[] = [];
+// let categoryData:categoryDataType[] = [];
 
 async function getAllData(){
 

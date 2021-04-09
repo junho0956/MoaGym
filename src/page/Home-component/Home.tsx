@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { nodragImage } from '../../common/nodragImage';
+// import { nodragImage } from '../../common/nodragImage';
 import {
     ProductList,
     PhotoReview,
@@ -46,7 +46,7 @@ import store, { RootState } from '../../common/store';
 import { brandDataType } from '../../hook/InitData';
 import { weekbestUpdate } from '../WeekBest-component/state';
 import { ReviewCardComponent } from '../../interface/Review';
-import { brandList, brandListType} from '../../hook/InitData';
+// import { brandList, brandListType} from '../../hook/InitData';
 
 const Pcategory:string[] = [CGym, CYoga, CTop, CBottom];
 const settings = { // slick default settings

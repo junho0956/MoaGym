@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
-import store, {RootState} from '../../common/store';
-import {useHistory, useLocation} from 'react-router-dom';
+import {RootState} from '../../common/store';
+import {useLocation} from 'react-router-dom';
 import {
     BrandPageContainer,
     BrandRectangle,
@@ -46,7 +46,7 @@ const Tabsubmenu = ({data, view}:{data:brandDataType[], view:boolean}) => {
 
 export const BrandPage = () => {
 
-    const history = useHistory();
+    // const history = useHistory();
     const location = useLocation();
 
     const brandAllData = useSelector((state:RootState) => state.BrandDataReducer);
