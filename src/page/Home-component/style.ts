@@ -133,6 +133,9 @@ export const PopularCategoryItemWrap = styled.div`
 
 export const PopularCategoryItem = styled.div`
     cursor: pointer;
+    &>img{
+
+    }
 `;
 
 export const HomeRectangle = styled.div`

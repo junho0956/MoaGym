@@ -1,5 +1,56 @@
 import styled from 'styled-components';
 
+export const ProductItemLoading = styled.div`
+  position:relative;
+  width:148px;
+  height:246px;
+  background-color:#FFFFFF;
+  border-radius:10px;
+
+  &>.productItemLoadingImg{
+    position:absolute;
+    left:0%;
+    right:0%;
+    top:0%;
+    bottom:40.75%;
+    border-radius:10px;
+    width:148px;
+    height:145.76px;
+    background-color:lightgrey;
+  }
+
+  &>.productItemLoadingInfo1{
+    position:absolute;
+    left:0%;
+    right:0%;
+    top:60.23%;
+    bottom:31.27%;
+    background-color:lightgrey;
+    border-radius:6px;
+  }
+
+  &>.productItemLoadingInfo2{
+    position: absolute;
+    left: 0%;
+    right: 60.14%;
+    top: 71.81%;
+    bottom: 19.69%;
+    background: #DFDFDF;
+    border-radius: 6px;
+  }
+
+  &>.productItemLoadingInfo3{
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 83.4%;
+    bottom: 5.41%;
+    background: #DFDFDF;
+    border-radius: 6px;
+  }
+`;
+
+
 export const ProductItem = styled.div`
   position:relative;
   width:148px;

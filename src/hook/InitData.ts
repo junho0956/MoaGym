@@ -53,6 +53,5 @@ export async function getInitData(){
      * }
      */
     let brandData:brandDataType[] = await getAllData();
-
     return brandData;
 }

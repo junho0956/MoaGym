@@ -28,7 +28,6 @@ import {
     SlideWrap,
     HomeWeekBest,
     HomeWeekBestTitle,
-    HomeWeekBestDesc,
     PopularCategory,
     PopularCategoryTitle,
     PopularCategoryItemWrap,
@@ -46,6 +45,7 @@ import store, { RootState } from '../../common/store';
 import { brandDataType } from '../../hook/InitData';
 import { weekbestUpdate } from '../WeekBest-component/state';
 import { ReviewCardComponent } from '../../interface/Review';
+import { changeCategory } from '../../shared/Category/state';
 // import { brandList, brandListType} from '../../hook/InitData';
 
 const Pcategory:string[] = [CGym, CYoga, CTop, CBottom];
@@ -65,6 +65,7 @@ export const HomePage = () => {
     const [photoReview, setPhotoReview] = useState<ReviewCardComponent[]>([]);
     const [newProduct, setNewProduct] = useState<ItemInfoComponent[]>([]);
     const [brandList, setBrandList] = useState<brandDataType[]>([]);
+    const categorys = useSelector((state:RootState) => state.Category);
 
     useEffect(() => {
         if(brand.length > 0){
@@ -106,6 +107,8 @@ export const HomePage = () => {
             setPhotoReview(photoReviewcopy);
             setNewProduct(newProductcopy);
             setBrandList(brandListcopy);
+
+
         }
     }, [brand])
 
@@ -144,10 +147,13 @@ export const HomePage = () => {
                     <MoreBtn onClick={() => history.push('./category')}>더보기</MoreBtn>
                 </PopularCategoryTitle>
                 <PopularCategoryItemWrap>
-                    {Pcategory.map((item:string, index) => {
+                    {categorys.slice(0,4).map((item, index) => {
                         return(
-                            <PopularCategoryItem key={index}>
-                                <img src={item} alt="Pcategory_img"/>
+                            <PopularCategoryItem key={item.id}>
+                                <img src={Pcategory[index]} alt="Homecategory_img" onClick={() => {
+                                    history.push('/categoryDetail');
+                                    store.dispatch(changeCategory(item.id));
+                                }}/>
                             </PopularCategoryItem>
                         )
                     })}

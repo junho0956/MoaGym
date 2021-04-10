@@ -22,7 +22,7 @@ import { Review } from '../../shared';
 const Tabsubmenu = ({data, view}:{data:brandDataType[], view:boolean}) => {
     
     const [subdata, setSubdata] = useState<brandDataType[]>([]);
-
+    
     useEffect(() => {
         setSubdata(data);
     }, [data]);

@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react';
+import {useState, useEffect, useRef, useCallback} from 'react';
 import {ReviewCardComponent} from '../../interface/Review';
 import {
   ReviewComponent,
@@ -33,9 +33,41 @@ function ReviwItem({review}:{review:ReviewCardComponent}){
 }
 
 export const Review = ({reviewState}:{reviewState:ReviewCardComponent[]}) => {
+  
+  const startIdx = useRef(0);
+  const endIdx = useRef(0);
+  const [review, setReview] = useState<ReviewCardComponent[]>([]);
+
+  const checkScroll = useCallback(() => {
+    const AppContainer = document.getElementById('AppContainer');
+    const TotalHeight = AppContainer?.scrollHeight as number;
+    const viewHeight = AppContainer?.clientHeight as number;
+    const notViewHeight = AppContainer?.scrollTop as number;
+    if(viewHeight+notViewHeight >= TotalHeight){
+        const getProduct = reviewState.slice(startIdx.current, endIdx.current);
+        startIdx.current += 10;
+        endIdx.current += 10;
+        setReview(review.concat(getProduct));
+    }
+}, [review]);
+
+  useEffect(() => {
+    startIdx.current = 10;
+    endIdx.current = 20;
+    setReview(reviewState.slice(0, 10));
+  }, [reviewState]);
+
+  useEffect(() => {
+    const AppContainer = document.getElementById('AppContainer');
+    (AppContainer as HTMLDivElement).addEventListener('scroll', checkScroll);        
+    return () => {
+        (AppContainer as HTMLDivElement).removeEventListener('scroll', checkScroll);
+    }
+}, [review]);
+
   return (
     <>
-      {reviewState.length > 0 && reviewState.map((review:ReviewCardComponent) => {
+      {review.length > 0 && review.map((review:ReviewCardComponent) => {
           return <ReviwItem key={review.reviewId} review={review} />
       })}
     </>

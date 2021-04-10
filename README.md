@@ -34,9 +34,28 @@ sharedComponent
 ### update
 
 날짜 내림차순 기준으로 커밋 및 필요한 기록을 정리
+- 21.04.10
+    - add Loading component, Infinity scroll(review)
+        - Loading component
+        - 2가지의 로딩 컴포넌트를 구현하였다.
+        1. 데이터 처리에 대한 초기 화면 로딩 컴포넌트 구현
+        2. 이미지의 로딩 여부에 따른 컴포넌트 구현
+            - 2번 컴포넌트를 구현하면서 아래와 같은 문제점 발견
+            ```
+            React Hook "useCommaNumber" is called conditionally. React Hooks must be called in the exact same order in every component render.
+            ```
+            - 위 에러코드의 useCommaNumber는 element 내부에서 script를 사용하여 숫자에 콤마를 찍어주는 함수인데, 로딩 컴포넌트와 함께 조건부 렌더링으로 사용하면서 에러가 발생했다.
+            - [공식문서](https://ko.reactjs.org/docs/hooks-rules.html#explanation)를 통해서 hook의 규칙에 대해 공부하고, useCommaNumber를 초기에 계산하여 렌더링을 하여 문제를 해결했다.
+
+        - infinity scroll : review 컴포넌트에 적용완료<div>
+    - update categorys In HomePage
+        - 홈페이지 내의 카테고리항목별로 detail 페이지로 이동할 수 있도록 적용<div>
+
+    - next todo
+        - 이미지가 있는 리뷰에 대해서 이미지를 클릭 시 모달창 띄우기(닫기버튼, 다른 곳 클릭시 닫기)
 
 - 21.04.08
-    - feature Infinity scroll(product, review component)
+    - feature Infinity scroll(product)
         - 성능 개선을 위해 스크롤을 계산하여 데이터를 추가하는 Infinity scroll을 구현 
         - 구현방법
             - GNB을 제외한 중간 엘리먼트의 스크롤을 scrollHeight, clientHeight, scrollTop 을 사용하여 계산

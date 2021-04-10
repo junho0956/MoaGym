@@ -1,4 +1,4 @@
-import {useRef, useEffect} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import {
   ProductItem,
   ProductReviewCnt,
@@ -10,6 +10,7 @@ import {
   ProductTagWrap,
   ProductTag,
   UpperRight,
+  ProductItemLoading,
 } from './style'
 import {useCommaNumber} from '../../common/useCommaNumber';
 import ProductReviewCntImg from './image/ProductReviewCntImg.svg';
@@ -22,11 +23,26 @@ import {useHistory} from 'react-router-dom';
 import store from '../../common/store';
 import {setProduct} from '../../page/ItemInfo/state';
 
+function ProductLoading(){
+  return(
+    <ProductItemLoading>
+      <div className="productItemLoadingImg"></div>
+      <div className="productItemLoadingInfo1"></div>
+      <div className="productItemLoadingInfo2"></div>
+      <div className="productItemLoadingInfo3"></div>
+    </ProductItemLoading>
+  )
+}
+
 function ProductListItem({product}:{product:ItemInfoComponent}){
 
+  const loadImg = document.createElement('img');
+  const [loading, setLoading] = useState(true);
   const item_ref = useRef<HTMLDivElement>(null);
   const move = useRef(true);
   const history = useHistory();
+  const price = useRef<string[]>(useCommaNumber(product.productPrice));
+  const reviewCnt = useRef<string[]>(useCommaNumber(product.productReviewCnt));
 
   useEffect(() => {
     if(item_ref){
@@ -46,30 +62,45 @@ function ProductListItem({product}:{product:ItemInfoComponent}){
     }
   }, [])
 
+  useEffect(()=>{
+    loadImg.className = "ProductImg";
+    loadImg.alt = "productItem_alt";
+    loadImg.onload = function(){
+      setLoading(false);
+    }
+    loadImg.src = product.productImageUrl[0].url;
+  }, [product]);
+
+  useEffect(() => {
+    if(loading){
+      (item_ref.current as HTMLDivElement).insertBefore(loadImg, (item_ref.current as HTMLDivElement).firstChild);
+    }
+  }, [loading])
 
   return (
     <ProductItem ref={item_ref}>
-      <img src={product.productImageUrl[0].url} className="ProductImg"/>
-      {product.productReviewCnt > 99 &&
-        (<UpperRight>
-          {product.productReviewCnt > 999 ? <img src={badge1000}/> : <img src={badge100}/>}
-        </UpperRight>)}
-      <BrandTitle>{product.brandName}</BrandTitle>
-      <ProductTitle>{product.productName}</ProductTitle>
-      <ProductPrice>{useCommaNumber(product.productPrice)}원</ProductPrice>
-      <img src={ProductReviewStarImg} className="ProductReviewStar"/>
-      <ProductReviewPoint>{product.productReviewPoint}</ProductReviewPoint>
-      <img src={Rectangle} className="Rectangle"/>
-      <ProductReview>
-        <img src={ProductReviewCntImg}/>
-        <ProductReviewCnt>{useCommaNumber(product.productReviewCnt)}</ProductReviewCnt>
-      </ProductReview>
-      <ProductTagWrap>
-        {/* {product..map((tag:string, index)=>{
-          return(<ProductTag key={index}>{tag}</ProductTag>)
-        })} */}
-        <ProductTag>{product.category}</ProductTag>
-      </ProductTagWrap>
+      {loading ? <ProductLoading /> :
+        <>
+        {product.productReviewCnt > 99 &&
+          (<UpperRight>
+            {product.productReviewCnt > 999 ? <img src={badge1000}/> : <img src={badge100}/>}
+          </UpperRight>)
+        }
+        <BrandTitle>{product.brandName}</BrandTitle>
+        <ProductTitle>{product.productName}</ProductTitle>
+        <ProductPrice>{price.current}원</ProductPrice>
+        <img src={ProductReviewStarImg} className="ProductReviewStar"/>
+        <ProductReviewPoint>{product.productReviewPoint}</ProductReviewPoint>
+        <img src={Rectangle} className="Rectangle"/>
+        <ProductReview>
+          <img src={ProductReviewCntImg}/>
+          <ProductReviewCnt>{reviewCnt.current}</ProductReviewCnt>
+        </ProductReview>
+        <ProductTagWrap>
+          <ProductTag>{product.category}</ProductTag>
+        </ProductTagWrap>
+        </>
+      }
     </ProductItem>
   );
 }

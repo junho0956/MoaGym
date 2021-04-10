@@ -1,4 +1,4 @@
-import {useEffect, useCallback} from 'react';
+import {useState, useEffect, useCallback, Fragment} from 'react';
 import styled from 'styled-components';
 import {Provider} from 'react-redux';
 import store from './common/store';
@@ -26,7 +26,7 @@ import { getCategoryData } from './hook/getCategoryData';
 import { initCategory } from './shared/Category/state';
 import { BrandListPage } from './page/Brand/BrandList-page';
 import { BrandPage } from './page/Brand/BrandPage';
-
+import Loading from './shared/Loading/Loading';
 
 const Root = styled.div`
   position: relative;
@@ -55,11 +55,14 @@ const AppContainer = styled.div`
 
 function App(){
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const getinitdata = useCallback(async() => {
     const getdata = await getInitData();
     const categoryData = getCategoryData(getdata);
     store.dispatch(initData(getdata));
     store.dispatch(initCategory(categoryData));
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {
@@ -67,42 +70,46 @@ function App(){
   },[]);
 
   return (
+
     <Root>
       <Provider store={store}>
         <Router>
+          {
+            isLoading ? <Loading /> :
+            <Fragment > 
+              <HeaderContainer>
+                <img src={Logo} alt="titlebar_Logo"/>
+              </HeaderContainer>
 
-          <HeaderContainer>
-            <img src={Logo} alt="titlebar_Logo"/>
-          </HeaderContainer>
+              <AppContainer id="AppContainer">
+                <Switch>
+                  <Route exact path="/">
+                    <HomePage />
+                  </Route>
+                  <Route exact path="/brandlist">
+                    <BrandListPage />
+                  </Route>
+                  <Route path="/brand/:bn">
+                    <BrandPage />
+                  </Route>
+                  <Route exact path="/category">
+                    <CategoryPage />
+                  </Route>
+                  <Route exact path='/weekbest'>
+                    <WeekBestPage />
+                  </Route>
+                  <Route exact path='/categoryDetail'>
+                    <CategoryDetailPage />
+                  </Route>
+                  <Route exact path='/product'>
+                    <ItemInfoPage />
+                  </Route>
+                </Switch>
+              </AppContainer>
 
-          <AppContainer id="AppContainer">
-            <Switch>
-              <Route exact path="/">
-                <HomePage />
-              </Route>
-              <Route exact path="/brandlist">
-                <BrandListPage />
-              </Route>
-              <Route path="/brand/:bn">
-                <BrandPage />
-              </Route>
-              <Route exact path="/category">
-                <CategoryPage />
-              </Route>
-              <Route exact path='/weekbest'>
-                <WeekBestPage />
-              </Route>
-              <Route exact path='/categoryDetail'>
-                <CategoryDetailPage />
-              </Route>
-              <Route exact path='/product'>
-                <ItemInfoPage />
-              </Route>
-            </Switch>
-          </AppContainer>
-
-          <GNBMainComponent />
-
+              <GNBMainComponent />
+            </Fragment>
+          }
         </Router>
       </Provider>
     </Root>
