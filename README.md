@@ -35,6 +35,10 @@ sharedComponent
 
 날짜 내림차순 기준으로 커밋 및 필요한 기록을 정리
 
+- 21.04.20
+    - github page에 배포
+    - 최적화, 테스트 관련 공부 시작
+
 - 21.04.12
     - 스크롤에 대한 문제점 발견
     - 직전에 구현한 무한스크롤은 성능상으로 많은 문제가 있어서, 오히려 사용하지 않는 것이 사용자 경험에 좋다는 판단
@@ -214,6 +218,8 @@ sharedComponent
 ![brandPage2](./src/common/image/img_brandPage2.PNG)
 
 ### try
+
+[배포주소](https://junho0956.github.io/MoaGym/)
 
 ### buildWith
 

@@ -22,9 +22,11 @@ export interface categoryDataType{
 export let brandList:brandListType[] = [];
 // let categoryData:categoryDataType[] = [];
 
+const BACKEND_URL = 'https://goo.moagym.kro.kr:9090';
+
 async function getAllData(){
 
-    brandList = await fetch(`http://3.36.210.129:8080/api/v1/allBrands`)
+    brandList = await fetch(`${BACKEND_URL}/api/v1/allBrands`)
                 .then(res => res.json())
                 .then(res => res);
 
@@ -34,7 +36,7 @@ async function getAllData(){
                 brandName: brand.name,
                 brandImg: brand.brandImg,
                 brandId: brand.brandId,
-                brandData: await fetch(`http://3.36.210.129:8080/api/v1/itemsByBrandWithReview/${brand.name}`)
+                brandData: await fetch(`${BACKEND_URL}/api/v1/itemsByBrandWithReview/${brand.name}`)
                                 .then(res => res.json())
                                 .then(res => res),
             }

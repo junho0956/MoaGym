@@ -26,7 +26,7 @@ export const GNBItemList: IGnb[] = [
   {
     id: GNB_ITEM_TYPE.HOME,
     label: '홈',
-    link: '/',
+    link: '/MoaGym',
     icon: Home,
     selected: true
   },
