@@ -59,13 +59,17 @@ function App(){
 
   const getinitdata = useCallback(async() => {
     const getdata = await getInitData();
+    console.log(getdata);
     const categoryData = getCategoryData(getdata);
+    console.log(categoryData);
     store.dispatch(initData(getdata));
     store.dispatch(initCategory(categoryData));
+    console.log("load finish");
     setIsLoading(false);
   }, []);
 
   useEffect(() => {
+    console.log("load start");
     getinitdata();
   },[]);
 
