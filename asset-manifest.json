@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/MoaGym/static/css/main.25ade143.chunk.css",
-    "main.js": "/MoaGym/static/js/main.a40defa9.chunk.js",
-    "main.js.map": "/MoaGym/static/js/main.a40defa9.chunk.js.map",
+    "main.js": "/MoaGym/static/js/main.df606c60.chunk.js",
+    "main.js.map": "/MoaGym/static/js/main.df606c60.chunk.js.map",
     "runtime-main.js": "/MoaGym/static/js/runtime-main.3bad55c4.js",
     "runtime-main.js.map": "/MoaGym/static/js/runtime-main.3bad55c4.js.map",
     "static/css/2.05750ee5.chunk.css": "/MoaGym/static/css/2.05750ee5.chunk.css",
@@ -50,6 +50,6 @@
     "static/css/2.05750ee5.chunk.css",
     "static/js/2.c6f4a666.chunk.js",
     "static/css/main.25ade143.chunk.css",
-    "static/js/main.a40defa9.chunk.js"
+    "static/js/main.df606c60.chunk.js"
   ]
 }
