@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/MoaGym/static/css/main.25ade143.chunk.css",
-    "main.js": "/MoaGym/static/js/main.df606c60.chunk.js",
-    "main.js.map": "/MoaGym/static/js/main.df606c60.chunk.js.map",
+    "main.js": "/MoaGym/static/js/main.ef15cd97.chunk.js",
+    "main.js.map": "/MoaGym/static/js/main.ef15cd97.chunk.js.map",
     "runtime-main.js": "/MoaGym/static/js/runtime-main.3bad55c4.js",
     "runtime-main.js.map": "/MoaGym/static/js/runtime-main.3bad55c4.js.map",
     "static/css/2.05750ee5.chunk.css": "/MoaGym/static/css/2.05750ee5.chunk.css",
-    "static/js/2.c6f4a666.chunk.js": "/MoaGym/static/js/2.c6f4a666.chunk.js",
-    "static/js/2.c6f4a666.chunk.js.map": "/MoaGym/static/js/2.c6f4a666.chunk.js.map",
+    "static/js/2.3cfaf3ce.chunk.js": "/MoaGym/static/js/2.3cfaf3ce.chunk.js",
+    "static/js/2.3cfaf3ce.chunk.js.map": "/MoaGym/static/js/2.3cfaf3ce.chunk.js.map",
     "static/js/3.e90dda10.chunk.js": "/MoaGym/static/js/3.e90dda10.chunk.js",
     "static/js/3.e90dda10.chunk.js.map": "/MoaGym/static/js/3.e90dda10.chunk.js.map",
     "index.html": "/MoaGym/index.html",
     "static/css/2.05750ee5.chunk.css.map": "/MoaGym/static/css/2.05750ee5.chunk.css.map",
     "static/css/main.25ade143.chunk.css.map": "/MoaGym/static/css/main.25ade143.chunk.css.map",
-    "static/js/2.c6f4a666.chunk.js.LICENSE.txt": "/MoaGym/static/js/2.c6f4a666.chunk.js.LICENSE.txt",
+    "static/js/2.3cfaf3ce.chunk.js.LICENSE.txt": "/MoaGym/static/js/2.3cfaf3ce.chunk.js.LICENSE.txt",
     "static/media/Brand.444d959a.svg": "/MoaGym/static/media/Brand.444d959a.svg",
     "static/media/Category.6bad8376.svg": "/MoaGym/static/media/Category.6bad8376.svg",
     "static/media/Community.aecaad8d.svg": "/MoaGym/static/media/Community.aecaad8d.svg",
@@ -48,8 +48,8 @@
   "entrypoints": [
     "static/js/runtime-main.3bad55c4.js",
     "static/css/2.05750ee5.chunk.css",
-    "static/js/2.c6f4a666.chunk.js",
+    "static/js/2.3cfaf3ce.chunk.js",
     "static/css/main.25ade143.chunk.css",
-    "static/js/main.df606c60.chunk.js"
+    "static/js/main.ef15cd97.chunk.js"
   ]
 }
