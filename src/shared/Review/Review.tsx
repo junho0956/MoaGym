@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef, useCallback} from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import {ReviewCardComponent} from '../../interface/Review';
 import {
   ReviewComponent,
@@ -32,7 +32,7 @@ function ReviwItem({review}:{review:ReviewCardComponent}){
     )
 }
 
-export const Review = ({reviewState}:{reviewState:ReviewCardComponent[]}) => {
+const Review = ({reviewState}:{reviewState:ReviewCardComponent[]}) => {
   
   const startIdx = useRef(0);
   const endIdx = useRef(0);
@@ -73,3 +73,5 @@ export const Review = ({reviewState}:{reviewState:ReviewCardComponent[]}) => {
     </>
   );
 }
+
+export default React.memo(Review);

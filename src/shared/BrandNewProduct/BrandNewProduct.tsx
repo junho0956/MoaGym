@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {useHistory} from 'react-router-dom';
 import {
     Container,
@@ -11,7 +11,6 @@ import {
     SlideLi,
     ProductDesc,
     ProductDescTitle,
-    ProductDescInfo,
 } from './style';
 import newImg from './image/New.svg';
 import { slider } from '../../common/slider';
@@ -26,7 +25,7 @@ interface descType{
     brandProduct:string,
 }
 
-export const BrandNewProduct = ({products}:{products:ItemInfoComponent[]}) => {
+const BrandNewProduct = ({products}:{products:ItemInfoComponent[]}) => {
 
     const history = useHistory();
     const [desc, setDesc] = useState<descType|undefined>();
@@ -95,3 +94,5 @@ export const BrandNewProduct = ({products}:{products:ItemInfoComponent[]}) => {
     )
 
 }
+
+export default React.memo(BrandNewProduct);

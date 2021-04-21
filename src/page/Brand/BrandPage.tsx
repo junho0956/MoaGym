@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../common/store';
 import {useLocation} from 'react-router-dom';
@@ -13,11 +13,11 @@ import {
     BrandTabsubmenuLeft,
     BrandTabsubmenuRight,
 } from './style';
-import { brandDataType } from '../../hook/InitData';
+import { brandDataType } from '../../hook/useInitData';
 import TestBanner from './brandbanner.png';
 import { PRODUCT_LIST_DIRECTION } from '../../interface/Product';
-import {ProductList} from '../../shared/Product/List';
-import { Review } from '../../shared';
+import ProductList from '../../shared/Product/List';
+import Review from '../../shared/Review/Review';
 
 const Tabsubmenu = ({data, view}:{data:brandDataType[], view:boolean}) => {
     

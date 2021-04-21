@@ -2,15 +2,13 @@ import {useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 // import { nodragImage } from '../../common/nodragImage';
-import {
-    ProductList,
-    PhotoReview,
-} from '../../shared';
+import PhotoReview from '../../shared/PhotoReview/PhotoReview';
+import ProductList from '../../shared/Product/List';
 
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import { BrandNewProduct } from '../../shared/BrandNewProduct/BrandNewProduct';
+import BrandNewProduct from '../../shared/BrandNewProduct/BrandNewProduct';
 
 import {PRODUCT_LIST_DIRECTION} from '../../interface/Product';
 
@@ -42,7 +40,7 @@ import {
 } from './style';
 import { ItemInfoComponent } from '../../interface/ItemInfo';
 import store, { RootState } from '../../common/store';
-import { brandDataType } from '../../hook/InitData';
+import { brandDataType } from '../../hook/useInitData';
 import { weekbestUpdate } from '../WeekBest-component/state';
 import { ReviewCardComponent } from '../../interface/Review';
 import { changeCategory } from '../../shared/Category/state';

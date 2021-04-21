@@ -1,10 +1,7 @@
-import React, {useState, useEffect, useRef} from 'react';
+import { useEffect, useRef } from 'react';
 import { ItemInfoComponent } from '../../interface/ItemInfo';
-import {nodragImage} from '../../common/nodragImage';
-import {
-    PhotoReview,
-    Review,
-} from '../../shared'
+import PhotoReview from '../../shared/PhotoReview/PhotoReview';
+import Review from '../../shared/Review/Review';
 import {
     ItemInfoContainer,
     SlideWrap,
@@ -48,27 +45,6 @@ export const ItemInfoPage = () => {
     const slidePoint = useRef<HTMLDivElement>(null);
     const reviewStar = useRef<HTMLDivElement>(null);
     const reviewStarDetail = useRef<HTMLDivElement>(null);
-    // const popular = useRef<HTMLSpanElement>(null);
-    // const latest = useRef<HTMLSpanElement>(null);
-
-    // function changeProductReview(checked:boolean){
-    //     if(checked){ // true => popular
-    //         (popular.current as HTMLSpanElement).style.color = "#000000";
-    //         (latest.current as HTMLSpanElement).style.color = "#C1C1C1";
-            
-    //         setProductReview(product.productReview.concat().sort(function(a:ReviewCardComponent, b:ReviewCardComponent):number{
-    //             return a.likedCnt < b.likedCnt ? 1 : a.likedCnt > b.likedCnt ? -1 : 0;
-    //         }));
-    //     }
-    //     else{ // false => latest
-    //         (popular.current as HTMLSpanElement).style.color = "#C1C1C1";
-    //         (latest.current as HTMLSpanElement).style.color = "#000000";
-
-    //         setProductReview(product.productReview.concat().sort(function(a:ReviewCardComponent, b:ReviewCardComponent):number{
-    //             return a.createdTime < b.createdTime ? 1 : a.createdTime > b.createdTime ? -1 : 0;
-    //         }));
-    //     }
-    // }
 
     useEffect(() => {
         if(product.brandName !== 'brandName'){

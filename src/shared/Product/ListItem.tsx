@@ -1,4 +1,4 @@
-import {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   ProductItem,
   ProductReviewCnt,
@@ -105,4 +105,4 @@ function ProductListItem({product}:{product:ItemInfoComponent}){
   );
 }
 
-export default ProductListItem;
+export default React.memo(ProductListItem);

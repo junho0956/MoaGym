@@ -1,4 +1,6 @@
-import { ItemInfoComponent } from "../interface/ItemInfo";
+// 현재는 사용하지 않는 코드입니다
+
+import { ItemInfoComponent } from "../../interface/ItemInfo";
 
 export interface brandListType{
     brandId: number;
@@ -20,14 +22,16 @@ export interface categoryDataType{
 
 
 export let brandList:brandListType[] = [];
-// let categoryData:categoryDataType[] = [];
 
 const BACKEND_URL = 'https://goo.moagym.kro.kr:9090';
 
 async function getAllData(){
 
     brandList = await fetch(`${BACKEND_URL}/api/v1/allBrands`)
-                .then(res => res.json())
+                .then(res => {
+                    console.log(res);
+                    return res.json();
+                })
                 .then(res => res);
 
     const brandListType:brandDataType[] = await Promise.all(

@@ -15,7 +15,7 @@ import {
 } from './style';
 import { nodragImage } from '../../common/nodragImage';
 
-export const PhotoReviewItem = ({item}:{item:ReviewCardComponent}) => {
+const PhotoReviewItem = ({item}:{item:ReviewCardComponent}) => {
     
     return(
         <PhotoReviewItemContainer>
@@ -33,7 +33,7 @@ export const PhotoReviewItem = ({item}:{item:ReviewCardComponent}) => {
 
 }
 
-export const PhotoReview = ({itemList, initSize}:{itemList:ReviewCardComponent[], initSize:number}) => {
+const PhotoReview = ({itemList, initSize}:{itemList:ReviewCardComponent[], initSize:number}) => {
 
     const wrap = useRef<HTMLUListElement>(null);
     
@@ -64,3 +64,5 @@ export const PhotoReview = ({itemList, initSize}:{itemList:ReviewCardComponent[]
     )
 
 }
+
+export default React.memo(PhotoReview);

@@ -19,7 +19,7 @@ import socks from './image/socks.png';
 import socksSelect from './image/Tab_category_socks.png';
 
 import { ItemInfoComponent } from '../../interface/ItemInfo';
-import { categoryDataType } from '../../hook/InitData';
+import { categoryDataType } from '../../hook/useInitData';
 import _ from 'lodash';
 
 export enum category_Item_Type{

@@ -8,7 +8,7 @@ import {
 import {useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {RootState} from '../../common/store';
-import { brandDataType } from '../../hook/InitData';
+import { brandDataType } from '../../hook/useInitData';
 
 export const BrandListPage = () => {
 

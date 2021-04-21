@@ -12,8 +12,8 @@ import { PRODUCT_LIST_DIRECTION } from '../../interface/Product';
 // import {nodragImage} from '../../common/nodragImage';
 import {
     Category,
-    ProductList,
 } from '../../shared';
+import ProductList from '../../shared/Product/List';
 import { ItemInfoComponent } from '../../interface/ItemInfo';
 
 export const CategoryDetailPage = () => {

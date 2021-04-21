@@ -1,8 +1,6 @@
 // import {useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
-import {
-    ProductList
-} from '../../shared/Product/List';
+import ProductList from '../../shared/Product/List';
 // import {useLocation} from 'react-router-dom';
 import {PRODUCT_LIST_DIRECTION} from '../../interface/Product';
 import { CategoryRectangle } from '../Category-component/style';
