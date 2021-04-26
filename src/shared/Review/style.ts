@@ -1,5 +1,60 @@
 import styled from 'styled-components';
 
+export const ReviewItemLoading = styled.div`
+  width:312px;
+  height:226px;
+  border-radius:10px;
+  background-color:#FFFFFF;
+
+  &>.reviewItemLoadingimg{
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:44.85%;
+    border-radius:10px;
+    background-color:#DFDFDF;
+  }
+
+  &>.reviewItemLoadinginfo1{
+    position:absolute;
+    left:5.13%;
+    right:35.9%;
+    top:58.18%;
+    bottom:36.97%;
+    background-color:#DFDFDF;
+    border-radius:10px;
+  }
+  &>.reviewItemLoadinginfo2{
+    position:absolute;
+    left:5.13%;
+    right:35.9%;
+    top:65.45%;
+    bottom:29.7%;
+    background-color:#DFDFDF;
+    border-radius:10px;
+  }
+  &>.reviewItemLoadinginfo3{
+    position:absolute;
+    left:5.13%;
+    right:5.13%;
+    top:71.52%;
+    bottom:23.64%;
+    background-color:#DFDFDF;
+    border-radius:10px;
+  }
+  &>.reviewItemLoadinginfo4{
+    position:absolute;
+    left:5.13%;
+    right:59.94%;
+    top:90.3%;
+    bottom:4.85%;
+    background-color:#DFDFDF;
+    border-radius:10px;
+  }
+
+`;
+
 export const ReviewComponent = styled.div<{image:number}>`
   position:relative;
   background-color:#FFFFFF;
@@ -11,6 +66,9 @@ export const ReviewComponent = styled.div<{image:number}>`
   height: ${props => props.image > 0 ? `394px` : `168px`};
 `
 export const ReviewPhoto = styled.div`
+  width:312px;
+  height:226px;
+  border-radius:10px 10px 0 0;
   &>img{
     width:312px;
     height:226px;

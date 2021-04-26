@@ -23,3 +23,25 @@ export function getReviewStarPoint(wrap:React.RefObject<HTMLDivElement>,reviewPo
         wrap.current?.appendChild(starrate);
     }
 }
+
+export function getReviewStarPointNoRef(wrap:HTMLDivElement,reviewPoint:number){
+    let point = reviewPoint;
+    while(wrap.hasChildNodes()){
+        wrap.removeChild(wrap.firstChild as HTMLImageElement);
+    }
+    for(let i = 0; i<5; i++){
+        const starrate = document.createElement('img');
+        if(point>=1){
+            starrate.src = starrateFull;
+            point = point - 1;
+        }
+        else if(point>=0.5){
+            starrate.src = starrateHalf;
+            point = point - 0.5;
+        }
+        else{
+            starrate.src = starrateEmpty;
+        }
+        wrap.appendChild(starrate);
+    }
+}

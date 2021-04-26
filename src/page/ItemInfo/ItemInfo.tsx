@@ -48,7 +48,6 @@ export const ItemInfoPage = () => {
 
     useEffect(() => {
         if(product.brandName !== 'brandName'){
-            console.log(product);
             slideWrap && slider(slideWrap, 360, slidePoint);
             reviewStar && getReviewStarPoint(reviewStar, product.productReviewPoint);
             reviewStarDetail && getReviewStarPoint(reviewStarDetail, product.productReviewPoint);
@@ -77,45 +76,33 @@ export const ItemInfoPage = () => {
                 </SlideContainer>
             </SlideWrap>
             <SlidePointWrap ref={slidePoint}>
-                {product.productImageUrl.map((item:{url:string}, index) => {
+                {product.productImageUrl.map((item, index) => {
                     return <SlidePoint key={index}/>
                 })}
             </SlidePointWrap>
             <BrandTitle>{product.brandName}</BrandTitle>
             <ProductTitle>{product.productName}</ProductTitle>
             <ProductTagWrap>
-                {/* {product..map((tag:string, index) => {
-                    return(
-                        <ProductTag key={index}>
-                            <ProductTagLabel>{tag}</ProductTagLabel>
-                        </ProductTag>
-                    )
-                })} */}
                 {<ProductTag>
                     <ProductTagLabel>{product.category}</ProductTagLabel>
                 </ProductTag>}
             </ProductTagWrap>
-            <ProductPrice>{useCommaNumber(product.productPrice)}원</ProductPrice>
             <ItemInfoLine />
             <StarRate_Item_ReviewStar ref={reviewStar}/>
             <ProductReview>
                 <span className="ItemInfoProductReviewCnt">{useCommaNumber(product.productReviewCnt)}개</span>
                 <span>의 후기를 모았어요.</span>
-                <img src={reviewArrow} />
+                <ProductPrice>{useCommaNumber(product.productPrice)}원</ProductPrice>
             </ProductReview>
-            <img src={pickPhotoReview} className="pickPhotoReview" />
+            <img src={pickPhotoReview} className="pickPhotoReview" alt="pickPhotoReview_alt"/>
             <PhotoReview itemList={product.productReview} initSize={4}></PhotoReview>
             <div className="ItemInfoContainerRectangle1"/>
             <StarRate_ItemDetail>
-                <img src={starrateTitle} className="starrateTitle"/>
+                <img src={starrateTitle} className="starrateTitle" alt="starrateTitle_alt"/>
                 <StarRate_ItemDetail_ReviewCnt>{useCommaNumber(product.productReviewCnt)}개</StarRate_ItemDetail_ReviewCnt>
                 <StarRate_ItemDetail_ReviewStar ref={reviewStarDetail}/>
                 <StarRate_ItemDetail_ReviewPoint>{product.productReviewPoint}</StarRate_ItemDetail_ReviewPoint>
             </StarRate_ItemDetail>
-            {/* <div className="ItemInfoPL">
-                <Popularity ref={popular} onClick={() => changeProductReview(true)}>인기순</Popularity>
-                <Latest ref={latest} onClick={() => changeProductReview(false)}>최신순</Latest>
-            </div> */}
             <Review reviewState={product.productReview}/>
         </ItemInfoContainer>
     )

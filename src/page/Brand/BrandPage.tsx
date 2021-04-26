@@ -28,7 +28,7 @@ const Tabsubmenu = ({data, view}:{data:brandDataType[], view:boolean}) => {
     }, [data]);
 
     return (
-        <div>
+        <React.Fragment>
             {
                 subdata.length>0 &&
                 view
@@ -39,14 +39,13 @@ const Tabsubmenu = ({data, view}:{data:brandDataType[], view:boolean}) => {
                     )
                 })
             }
-        </div>
+        </React.Fragment>
     )
 
 }
 
 export const BrandPage = () => {
 
-    // const history = useHistory();
     const location = useLocation();
 
     const brandAllData = useSelector((state:RootState) => state.BrandDataReducer);
@@ -55,7 +54,7 @@ export const BrandPage = () => {
 
     useEffect(() => {
         setBrandData(brandAllData.filter(item => item.brandName === location.state));
-    },[]);
+    },[brandAllData]);
 
     function changeTab(tab:string){
         if(tab === 'product') setSelectTab(true);
@@ -67,10 +66,10 @@ export const BrandPage = () => {
             <BrandRectangle />
             <BrandTitle>
                 <BrandName>{brandData[0]?.brandName}</BrandName>
-                <BrandLink><a href="#">Mall</a></BrandLink>
+                <BrandLink><a href="#" target="_blank">Mall</a></BrandLink>
             </BrandTitle>
             <BrandBanner>
-                <img src={TestBanner}></img>
+                <img src={TestBanner} alt="brandpage_testbanner"></img>
             </BrandBanner>
             <BrandTabsubmenu>
                 <BrandTabsubmenuLeft selected={selectTab} onClick={() => changeTab('product')}>제품</BrandTabsubmenuLeft>

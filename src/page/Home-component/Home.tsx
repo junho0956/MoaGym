@@ -1,7 +1,5 @@
-import {useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-// import { nodragImage } from '../../common/nodragImage';
 import PhotoReview from '../../shared/PhotoReview/PhotoReview';
 import ProductList from '../../shared/Product/List';
 
@@ -38,16 +36,16 @@ import {
     RecommentBrandList,
     RecommendBrandItem,
 } from './style';
-import { ItemInfoComponent } from '../../interface/ItemInfo';
 import store, { RootState } from '../../common/store';
 import { brandDataType } from '../../hook/useInitData';
-import { weekbestUpdate } from '../WeekBest-component/state';
-import { ReviewCardComponent } from '../../interface/Review';
 import { changeCategory } from '../../shared/Category/state';
-// import { brandList, brandListType} from '../../hook/InitData';
+import useWeekBestItem from '../../hook/useWeekBestItem';
+import usePhotoReview from '../../hook/usePhotoReview';
+import useNewProduct from '../../hook/useNewProduct';
+import useBrandList from '../../hook/useBrandList';
 
 const Pcategory:string[] = [CGym, CYoga, CTop, CBottom];
-const settings = { // slick default settings
+const settings = { // slick library default settings
     dots: true,
     infinite: true,
     speed: 500,
@@ -59,56 +57,11 @@ export const HomePage = () => {
 
     const history = useHistory();
     const brand = useSelector((state:RootState) => state.BrandDataReducer);
-    const [weekbestInHomePage, setWeekbestInHomePage] = useState<ItemInfoComponent[]>([]);
-    const [photoReview, setPhotoReview] = useState<ReviewCardComponent[]>([]);
-    const [newProduct, setNewProduct] = useState<ItemInfoComponent[]>([]);
-    const [brandList, setBrandList] = useState<brandDataType[]>([]);
     const categorys = useSelector((state:RootState) => state.Category);
-
-    useEffect(() => {
-        if(brand.length > 0){
-            let weekbestItemcopy:ItemInfoComponent[] = [];
-            let photoReviewcopy:ReviewCardComponent[] = [];
-            let newProductcopy:ItemInfoComponent[] = [];
-            let brandListcopy:brandDataType[] = [];
-            let brandcopy:{data:ItemInfoComponent[]}[] = [];
-            let weekbestInHomePagecopy:ItemInfoComponent[] = [];
-            
-            brand.forEach((item, index) => {
-                brandcopy.push({data:[]});
-                item.brandData.forEach(item => {
-                    brandcopy[index].data.push(item);
-                })
-            })
-            brandcopy.forEach(item => {
-                item.data.sort((a,b) => b.productReviewCnt - a.productReviewCnt);
-                weekbestItemcopy.push(item.data[0]);
-                weekbestItemcopy.push(item.data[1]);
-                weekbestInHomePagecopy.push(item.data[0]);
-            })
-            brand.forEach((item:brandDataType) => {
-                newProductcopy.push(item.brandData[0]);
-                item.brandData.forEach(brandItem => {
-                    brandItem.productReview.forEach(review => {
-                        if((review.reviewImageUrl as {url:string}[]).length > 0){
-                            photoReviewcopy.push(review);
-                        }
-                    })
-                })
-            })
-            photoReviewcopy.sort((a,b) => Math.random() - 0.5);
-            for(let i = 0; i<3; i++){
-                brandListcopy.push(brand[i]);
-            }
-            store.dispatch(weekbestUpdate(weekbestItemcopy, brandcopy));
-            setWeekbestInHomePage(weekbestInHomePagecopy);
-            setPhotoReview(photoReviewcopy);
-            setNewProduct(newProductcopy);
-            setBrandList(brandListcopy);
-
-
-        }
-    }, [brand])
+    const weekbest = useWeekBestItem(brand);
+    const newProduct = useNewProduct(brand);
+    const photoReview = usePhotoReview(brand);
+    const brandList = useBrandList(brand);
 
     return(
         <HomeContainer>
@@ -128,16 +81,16 @@ export const HomePage = () => {
 
             <HomeWeekBest>
                 <HomeWeekBestTitle>BEST 상품</HomeWeekBestTitle>
-                {/* <HomeWeekBestDesc>매주 금요일 갱신</HomeWeekBestDesc> */}
                 <MoreBtn onClick={() => {
                     history.push({
                         pathname: `/weekbest`,
+                        state: weekbest.inweek,
                     })
                 }}>더보기</MoreBtn>
                 
             </HomeWeekBest>
 
-            <ProductList product={weekbestInHomePage} direction={PRODUCT_LIST_DIRECTION.HORIZONTAL}/>
+            <ProductList product={weekbest.inhome} direction={PRODUCT_LIST_DIRECTION.HORIZONTAL}/>
 
             <PopularCategory>
                 <PopularCategoryTitle>

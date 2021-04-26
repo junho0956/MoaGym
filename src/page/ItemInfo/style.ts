@@ -155,20 +155,19 @@ export const BrandTitle = styled.div`
 `;
 export const ProductTitle = styled.div`
     position: relative;
-    /* width: 174px;
-    height: 32px; */
-    left: 23px;
-    /* top: 497px; */
+    left: 24px;
+    width: 336px;
+    margin: 0;
 
     font-family: Spoqa Han Sans Neo;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
+    
     line-height: 32px;
 
     display: flex;
     align-items: center;
-    text-align: right;
 
     color: #3D3D3D;
 `;
@@ -216,10 +215,7 @@ export const ProductTagLabel = styled.div`
 `;
 export const ProductPrice = styled.div`
     position: absolute;
-    /* width: 88px; */
-    height: 24px;
     right: 24px;
-    top: 497px;
 
     font-family: Spoqa Han Sans Neo;
     font-style: normal;
@@ -261,6 +257,8 @@ export const ProductReview = styled.div`
     position:relative;
     height:17px;
     left:24px;
+    width:336px;
+
     /* top:580px; */
     margin-top:4px;
     font-family:Spoqa Han Sans Neo, sans-serif;

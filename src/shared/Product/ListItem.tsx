@@ -36,7 +36,7 @@ function ProductLoading(){
 
 function ProductListItem({product}:{product:ItemInfoComponent}){
 
-  const loadImg = document.createElement('img');
+  const loadImg = useRef<HTMLImageElement>(document.createElement('img'));
   const [loading, setLoading] = useState(true);
   const item_ref = useRef<HTMLDivElement>(null);
   const move = useRef(true);
@@ -63,43 +63,43 @@ function ProductListItem({product}:{product:ItemInfoComponent}){
   }, [])
 
   useEffect(()=>{
-    loadImg.className = "ProductImg";
-    loadImg.alt = "productItem_alt";
-    loadImg.onload = function(){
+    loadImg.current.className = "ProductImg";
+    loadImg.current.alt = "productItem_alt";
+    loadImg.current.onload = function(){
       setLoading(false);
     }
-    loadImg.src = product.productImageUrl[0].url;
+    loadImg.current.src = product.productImageUrl[0].url;
   }, [product]);
 
   useEffect(() => {
-    if(loading){
-      (item_ref.current as HTMLDivElement).insertBefore(loadImg, (item_ref.current as HTMLDivElement).firstChild);
+    if(loading === false){
+      (item_ref.current as HTMLDivElement).insertBefore(loadImg.current, (item_ref.current as HTMLDivElement).firstChild);
     }
   }, [loading])
 
   return (
     <ProductItem ref={item_ref}>
       {loading ? <ProductLoading /> :
-        <>
-        {product.productReviewCnt > 99 &&
-          (<UpperRight>
-            {product.productReviewCnt > 999 ? <img src={badge1000}/> : <img src={badge100}/>}
-          </UpperRight>)
-        }
-        <BrandTitle>{product.brandName}</BrandTitle>
-        <ProductTitle>{product.productName}</ProductTitle>
-        <ProductPrice>{price.current}원</ProductPrice>
-        <img src={ProductReviewStarImg} className="ProductReviewStar"/>
-        <ProductReviewPoint>{product.productReviewPoint}</ProductReviewPoint>
-        <img src={Rectangle} className="Rectangle"/>
-        <ProductReview>
-          <img src={ProductReviewCntImg}/>
-          <ProductReviewCnt>{reviewCnt.current}</ProductReviewCnt>
-        </ProductReview>
-        <ProductTagWrap>
-          <ProductTag>{product.category}</ProductTag>
-        </ProductTagWrap>
-        </>
+        <React.Fragment>
+          {product.productReviewCnt > 99 &&
+            (<UpperRight>
+              {product.productReviewCnt > 999 ? <img src={badge1000}/> : <img src={badge100}/>}
+            </UpperRight>)
+          }
+          <BrandTitle>{product.brandName}</BrandTitle>
+          <ProductTitle>{product.productName}</ProductTitle>
+          <ProductPrice>{price.current}원</ProductPrice>
+          <img src={ProductReviewStarImg} className="ProductReviewStar"/>
+          <ProductReviewPoint>{product.productReviewPoint}</ProductReviewPoint>
+          <img src={Rectangle} className="Rectangle"/>
+          <ProductReview>
+            <img src={ProductReviewCntImg}/>
+            <ProductReviewCnt>{reviewCnt.current}</ProductReviewCnt>
+          </ProductReview>
+          <ProductTagWrap>
+            <ProductTag>{product.category}</ProductTag>
+          </ProductTagWrap>
+        </React.Fragment>
       }
     </ProductItem>
   );

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {applyOnMouse} from '../../common/applyOnMouse';
 import {ReviewCardComponent} from '../../interface/Review';
 import reviewStarImg from './image/reviewStarImg.svg';
@@ -11,23 +11,59 @@ import {
     PhotoReviewItemAuthor,
     PhotoReviewItemPoint,
     PhotoReviewItemText,
-    PhotoReviewItemBrand
+    PhotoReviewItemBrand,
+    PhotoReviewItemLoading,
 } from './style';
 import { nodragImage } from '../../common/nodragImage';
 
-const PhotoReviewItem = ({item}:{item:ReviewCardComponent}) => {
-    
+const PhotoReviewLoading = () => {
+
     return(
-        <PhotoReviewItemContainer>
-            <img src={item.reviewImageUrl[0].url} className="photoReviewItemImg"/>
-            <PhotoReviewItemAuthor>
-                {item.authorName[0]}**님의 후기
-            </PhotoReviewItemAuthor>
-            <img src={reviewStarImg} className="photoReviewItemStarImg"/>
-            <PhotoReviewItemPoint>{item.reviewPoint}</PhotoReviewItemPoint>
-            <img src={rectangleImg} className="photoReviewItemRectangleImg"/>
-            <PhotoReviewItemBrand>{item.brandName}</PhotoReviewItemBrand>
-            <PhotoReviewItemText>{item.reviewDesc}</PhotoReviewItemText>
+        <PhotoReviewItemLoading>
+            <div className="photoReviewItemLoadingImg"></div>
+            <div className="photoReviewItemLoadingInfo1"></div>
+            <div className="photoReviewItemLoadingInfo2"></div>
+            <div className="photoReviewItemLoadingInfo3"></div>
+        </PhotoReviewItemLoading>
+    )
+
+}
+
+const PhotoReviewItem = ({item}:{item:ReviewCardComponent}) => {
+
+    const [loading, setLoading] = useState(true);
+    const primg = useRef<HTMLImageElement>(document.createElement('img'));
+    const prRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        primg.current.alt = "photoreview_alt";
+        primg.current.className = 'photoReviewItemImg';
+        primg.current.onload = function(){
+            setLoading(false);
+        }
+        primg.current.src = item.reviewImageUrl[0].url;
+    }, [item])
+
+    useEffect(() => {
+        if(!loading){
+            (prRef.current as HTMLDivElement).insertBefore(primg.current, (prRef.current as HTMLDivElement).firstChild);
+        }
+    }, [loading]);
+
+    return(
+        <PhotoReviewItemContainer ref={prRef}>
+            {loading ? <PhotoReviewLoading /> : 
+            <React.Fragment>
+                <PhotoReviewItemAuthor>
+                    {item.authorName[0]}**님의 후기
+                </PhotoReviewItemAuthor>
+                <img src={reviewStarImg} className="photoReviewItemStarImg" alt="photoReviewStarimg_alt"/>
+                <PhotoReviewItemPoint>{item.reviewPoint}</PhotoReviewItemPoint>
+                <img src={rectangleImg} className="photoReviewItemRectangleImg" alt="photoreview_rectangle_alt"/>
+                <PhotoReviewItemBrand>{item.brandName}</PhotoReviewItemBrand>
+                <PhotoReviewItemText>{item.reviewDesc}</PhotoReviewItemText>
+            </React.Fragment>
+            }
         </PhotoReviewItemContainer>
     )
 
@@ -36,8 +72,8 @@ const PhotoReviewItem = ({item}:{item:ReviewCardComponent}) => {
 const PhotoReview = ({itemList, initSize}:{itemList:ReviewCardComponent[], initSize:number}) => {
 
     const wrap = useRef<HTMLUListElement>(null);
-    
-    const itemListArray:ReviewCardComponent[] = [];
+
+    let itemListArray:ReviewCardComponent[] = [];
     for(let i = 0; i<itemList.length && itemListArray.length<initSize; i++){
         if(itemList[i].reviewImageUrl.length>0){
             itemListArray.push(itemList[i]);

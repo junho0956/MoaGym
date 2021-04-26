@@ -30,7 +30,7 @@ function useInitData(){
             return fetch(`${BACKEND_URL}/api/v1/allBrands`)
                     .then(res => {
                         if(res.status === 200) return res.json();
-                        else throw new Error;
+                        else throw new Error();
                     })
                     .then(res => res)
                     .catch(() => getBrandList);
@@ -40,14 +40,14 @@ function useInitData(){
             return fetch(`${BACKEND_URL}/api/v1/itemsByBrandWithReview/${brandname}`)
             .then(res => {
                 if(res.status === 200) return res.json();
-                else throw new Error;
+                else throw new Error();
             })
             .then(res => res)
             .catch(() => getBrandData(brandname));
         }
 
         let brandList:brandListType[] = await getBrandList();
-
+        
         const brandListData:brandDataType[] = await Promise.all(
             brandList.map(async(brand) => {
                 return{
@@ -58,7 +58,7 @@ function useInitData(){
                 }
             })
         );
-
+        
         return brandListData;
     }, [])
 

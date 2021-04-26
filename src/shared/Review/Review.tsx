@@ -5,29 +5,80 @@ import {
   ReviewPhoto,
   ReviewInfo,
   ReviewStarPoint,
+  ReviewItemLoading,
 } from './style';
-import {getReviewStarPoint} from '../../common/getReviewStarPoint';
+import {getReviewStarPointNoRef} from '../../common/getReviewStarPoint';
 import rectangle from '../../common/image/Rectangle.svg';
+
+function ReviewLoading(){
+  return(
+    <ReviewItemLoading>
+      <div className="reviewItemLoadingimg" />
+      <div className="reviewItemLoadinginfo1" />
+      <div className="reviewItemLoadinginfo2" />
+      <div className="reviewItemLoadinginfo3" />
+      <div className="reviewItemLoadinginfo4" />
+    </ReviewItemLoading>
+  )
+}
 
 function ReviwItem({review}:{review:ReviewCardComponent}){
     const reviewImage:{url:string}[] = review.reviewImageUrl;
-    const reviewStarPointDOM = useRef(null);
+    const reviewRef = useRef<HTMLDivElement>(null);
+    const [loading, setLoading] = useState(true);
+    const rimg = useRef<HTMLImageElement>(document.createElement('img'));
     
     useEffect(() => {
-      reviewStarPointDOM && getReviewStarPoint(reviewStarPointDOM, review.reviewPoint);
-    }, [review])
+      if(reviewImage.length > 0){
+        if(!loading){
+          getReviewStarPointNoRef(((reviewRef.current as HTMLDivElement).children[1] as HTMLDivElement).firstChild as HTMLDivElement, review.reviewPoint);
+        }
+      }
+      else{
+          getReviewStarPointNoRef(((reviewRef.current as HTMLDivElement).firstChild as HTMLDivElement).firstChild as HTMLDivElement, review.reviewPoint);   
+      }
+    }, [review, loading])
+
+    useEffect(() => {
+      if(reviewImage.length>0){
+        rimg.current.alt = "reviewImage_alt";
+        rimg.current.src = reviewImage[0].url;
+        rimg.current.onload = function(){
+          setLoading(false);
+        }
+      }
+    }, [review]);
+
+    useEffect(() => {
+      if(reviewImage.length > 0 && !loading){
+        ((reviewRef.current as HTMLDivElement).firstChild as HTMLDivElement).appendChild(rimg.current);
+      }
+    }, [loading]);
 
     return(
-      <ReviewComponent image={reviewImage.length}>
-        {reviewImage.length > 0 && <ReviewPhoto><img src={reviewImage[0].url}/></ReviewPhoto>}
-        <ReviewInfo>
-          <ReviewStarPoint ref={reviewStarPointDOM}></ReviewStarPoint>
-          <div className="reviewProductSizeTitle">{review.reviewOption}</div>
-          <img src={rectangle} className="reviewRectangle"></img>
-          <div className="reviewDesc">{review.reviewDesc}</div>
-          <span className="reviewCreateAt">{review.createdTime.substring(0, 10)}</span>
-          <span className="reviewAutorInfo">{review.authorName[0]}***님</span>
-        </ReviewInfo>
+      <ReviewComponent ref={reviewRef} image={reviewImage.length}>
+        {reviewImage.length > 0 ?
+          loading ? <ReviewLoading /> :
+          <React.Fragment>
+            <ReviewPhoto className="absbs"></ReviewPhoto>
+            <ReviewInfo>
+              <ReviewStarPoint></ReviewStarPoint>
+              <div className="reviewProductSizeTitle">{review.reviewOption}</div>
+              <img src={rectangle} className="reviewRectangle"></img>
+              <div className="reviewDesc">{review.reviewDesc}</div>
+              <span className="reviewCreateAt">{review.createdTime.substring(0, 10)}</span>
+              <span className="reviewAutorInfo">{review.authorName[0]}***님</span>
+            </ReviewInfo>
+          </React.Fragment>
+        : <ReviewInfo>
+            <ReviewStarPoint></ReviewStarPoint>
+            <div className="reviewProductSizeTitle">{review.reviewOption}</div>
+            <img src={rectangle} className="reviewRectangle"></img>
+            <div className="reviewDesc">{review.reviewDesc}</div>
+            <span className="reviewCreateAt">{review.createdTime.substring(0, 10)}</span>
+            <span className="reviewAutorInfo">{review.authorName[0]}***님</span>
+          </ReviewInfo>
+        }
       </ReviewComponent>
     )
 }

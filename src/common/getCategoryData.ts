@@ -1,7 +1,7 @@
 
 import { brandDataType, categoryDataType } from "../hook/useInitData";
 
-// 현재 사용가능한 카테고리 => 짐웨어, 상의, 하의, 양말, 요가복, 레깅스
+// 현재 사용가능한 카테고리 => 짐웨어, 상의, 하의, 양말
 export function getCategoryData(brandData : brandDataType[]){
     let data:categoryDataType[] = [
         {

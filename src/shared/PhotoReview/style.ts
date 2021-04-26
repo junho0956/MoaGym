@@ -1,5 +1,61 @@
 import styled from 'styled-components';
 
+export const PhotoReviewItemLoading = styled.div`
+  position:relative;
+  width:126px;
+  height:223px;
+  background-color:#FFFFFF;
+  border-radius:10px;
+
+  &>.photoReviewItemLoadingImg{
+    position:absolute;
+    left:0%;
+    right:0%;
+    top:0%;
+    bottom:40.75%;
+    border-radius:10px;
+    /* width:126px;
+    height:126px; */
+    background-color:#DFDFDF;
+  }
+
+  &>.photoReviewItemLoadingInfo1{
+    position:absolute;
+    /* width:80px;
+    height:16px; */
+    left:0%;
+    right:0%;
+    top:60.23%;
+    bottom:31.27%;
+    background-color:#DFDFDF;
+    border-radius:6px;
+  }
+
+  &>.photoReviewItemLoadingInfo2{
+    position: absolute;
+    left: 0%;
+    right: 60.14%;
+    top: 71.81%;
+    bottom: 19.69%;
+    /* width:72px;
+    height:14px; */
+    background: #DFDFDF;
+    border-radius: 6px;
+  }
+
+  &>.photoReviewItemLoadingInfo3{
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 83.4%;
+    bottom: 5.41%;
+    /* width:120px;
+    height:36px; */
+    background: #DFDFDF;
+    border-radius: 6px;
+  }
+`;
+
 export const PhotoReviewContainer = styled.div`
     position:relative;
     width:360px;
@@ -116,6 +172,7 @@ export const PhotoReviewItemBrand = styled.div`
     display: flex;
     align-items: center;
     letter-spacing: 0.015em;
+    text-overflow:ellipsis;
 
     color: #3D3D3D;
 `;
@@ -144,3 +201,4 @@ export const PhotoReviewItemText = styled.div`
     word-break:break-all;
     white-space:normal;
 `;
+

@@ -34,7 +34,7 @@ function App(){
   const [isLoading, setIsLoading] = useState(true);
   const initData = useInitData();
 
-  const getinitdata = useCallback(async() => {
+  const getinitdata = useCallback(() => {
     if(initData){
       const categoryData = getCategoryData(initData);
       store.dispatch(initBrandData(initData));
@@ -44,7 +44,7 @@ function App(){
   }, [initData]);
 
   useEffect(() => { 
-    if(initData.length) getinitdata();
+    if(initData.length > 0) getinitdata();
   }, [initData]);
 
   return (
