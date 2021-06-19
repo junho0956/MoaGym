@@ -2,7 +2,7 @@ import {useState, useEffect, useCallback, Fragment} from 'react';
 import styled from 'styled-components';
 import {Provider} from 'react-redux';
 import store from './common/store';
-import Logo from './common/image/TitleBar_logo.svg';
+import Logo from './common/image/TitleBar_logo.png';
 import {
   BrowserRouter as Router,
   Switch,

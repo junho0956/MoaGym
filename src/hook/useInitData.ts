@@ -4,6 +4,7 @@ import { ItemInfoComponent } from '../interface/ItemInfo';
 export interface brandListType{
     brandId: number;
     brandImg: string;
+    brandUrl: string;
     name: string;
 }
 
@@ -11,6 +12,7 @@ export interface brandDataType{
     brandName: string,
     brandImg: string,
     brandId: number,
+    brandUrl: string,
     brandData: ItemInfoComponent[],
 }
 
@@ -54,6 +56,7 @@ function useInitData(){
                     brandName: brand.name,
                     brandImg: brand.brandImg,
                     brandId: brand.brandId,
+                    brandUrl: brand.brandUrl,
                     brandData: await getBrandData(brand.name),
                 }
             })

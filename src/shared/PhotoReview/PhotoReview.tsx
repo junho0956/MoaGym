@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {applyOnMouse} from '../../common/applyOnMouse';
-import {ReviewCardComponent} from '../../interface/Review';
 import reviewStarImg from './image/reviewStarImg.svg';
 import rectangleImg from './image/Rectangle.svg';
 import {
@@ -15,6 +14,7 @@ import {
     PhotoReviewItemLoading,
 } from './style';
 import { nodragImage } from '../../common/nodragImage';
+import { ReviewCardComponent } from '../../interface/Review';
 
 const PhotoReviewLoading = () => {
 
@@ -72,11 +72,11 @@ const PhotoReviewItem = ({item}:{item:ReviewCardComponent}) => {
 const PhotoReview = ({itemList, initSize}:{itemList:ReviewCardComponent[], initSize:number}) => {
 
     const wrap = useRef<HTMLUListElement>(null);
+    const itemListArray = useRef<ReviewCardComponent[]>([]);
 
-    let itemListArray:ReviewCardComponent[] = [];
-    for(let i = 0; i<itemList.length && itemListArray.length<initSize; i++){
+    for(let i = 0; i<itemList.length && itemListArray.current.length<initSize; i++){
         if(itemList[i].reviewImageUrl.length>0){
-            itemListArray.push(itemList[i]);
+            itemListArray.current.push(itemList[i]);
         }
     }
 
@@ -88,7 +88,7 @@ const PhotoReview = ({itemList, initSize}:{itemList:ReviewCardComponent[], initS
     return(
         <PhotoReviewContainer>
             <PhotoReviewUl ref={wrap}>
-                {itemListArray.map((item:ReviewCardComponent) => {
+                {itemListArray.current.map((item:ReviewCardComponent) => {
                     return(
                         <PhotoReviewLi key={item.reviewId}>
                             <PhotoReviewItem item={item} />

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { ItemInfoComponent } from '../../interface/ItemInfo';
 import PhotoReview from '../../shared/PhotoReview/PhotoReview';
 import Review from '../../shared/Review/Review';
@@ -23,8 +23,7 @@ import {
     StarRate_ItemDetail_ReviewCnt,
     StarRate_ItemDetail_ReviewPoint,
     StarRate_ItemDetail_ReviewStar,
-    // Popularity,
-    // Latest,
+    ArrowUp,
 } from './style';
 import {slider} from '../../common/slider';
 import {useCommaNumber} from '../../common/useCommaNumber';
@@ -32,7 +31,6 @@ import {getReviewStarPoint} from '../../common/getReviewStarPoint';
 // import { ReviewCardComponent } from '../../interface/Review';
 import leftBtn from './image/btn_itemdetail_left.svg';
 import rightBtn from './image/btn_itemdetail_right.svg';
-import reviewArrow from './image/icn_arrow_right_small.svg';
 import pickPhotoReview from './image/pickPhotoReview.svg';
 import starrateTitle from './image/starrateTitle.svg';
 import { useSelector } from 'react-redux';
@@ -45,6 +43,11 @@ export const ItemInfoPage = () => {
     const slidePoint = useRef<HTMLDivElement>(null);
     const reviewStar = useRef<HTMLDivElement>(null);
     const reviewStarDetail = useRef<HTMLDivElement>(null);
+
+    const pageMoveTop = useCallback(() => {
+        const AppContainer = document.getElementById('AppContainer');
+        AppContainer?.scrollTo(0,0);
+    }, []);
 
     useEffect(() => {
         if(product.brandName !== 'brandName'){
@@ -104,6 +107,7 @@ export const ItemInfoPage = () => {
                 <StarRate_ItemDetail_ReviewPoint>{product.productReviewPoint}</StarRate_ItemDetail_ReviewPoint>
             </StarRate_ItemDetail>
             <Review reviewState={product.productReview}/>
+            <ArrowUp onClick={pageMoveTop}><i className="fas fa-arrow-up"></i></ArrowUp>
         </ItemInfoContainer>
     )
 }

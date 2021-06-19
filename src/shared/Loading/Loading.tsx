@@ -5,7 +5,7 @@ import {
     LoadingHeader,
 } from './style';
 
-import Logo from '../../common/image/TitleBar_logo.svg';
+import Logo from '../../common/image/TitleBar_logo.png';
 import { GNBMainComponent } from '../../shared';
 import AppImg1 from '../../common/image/loadingAppImg1.png';
 import AppImg2 from '../../common/image/loadingAppImg2.png';

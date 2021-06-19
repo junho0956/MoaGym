@@ -352,3 +352,17 @@ export const Latest = styled.span`
     cursor:pointer;
     color:#C1C1C1;
 `;
+export const ArrowUp = styled.div`
+    position:sticky;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:3vw;
+    height:3vw;
+    bottom:5vh;
+    left:18rem;
+    background-color:#DFDFDF;
+    opacity:0.7;
+    border-radius:50%;
+    cursor:pointer;
+`;

@@ -66,7 +66,7 @@ export const BrandPage = () => {
             <BrandRectangle />
             <BrandTitle>
                 <BrandName>{brandData[0]?.brandName}</BrandName>
-                <BrandLink><a href="#" target="_blank">Mall</a></BrandLink>
+                <BrandLink><a href={brandData[0]?.brandUrl} target="_blank">SHOP</a></BrandLink>
             </BrandTitle>
             <BrandBanner>
                 <img src={TestBanner} alt="brandpage_testbanner"></img>

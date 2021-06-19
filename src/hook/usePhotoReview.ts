@@ -9,7 +9,7 @@ function usePhotoReview(brand:brandDataType[]){
     useEffect(() => {
 
         let photoReviewcopy:ReviewCardComponent[] = [];
-
+        console.log(brand);
         brand.forEach((item:brandDataType) => {
             item.brandData.forEach(brandItem => {
                 brandItem.productReview.forEach(review => {
