@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/MoaGym/static/css/main.25ade143.chunk.css",
-    "main.js": "/MoaGym/static/js/main.ef15cd97.chunk.js",
-    "main.js.map": "/MoaGym/static/js/main.ef15cd97.chunk.js.map",
+    "main.js": "/MoaGym/static/js/main.092f6d95.chunk.js",
+    "main.js.map": "/MoaGym/static/js/main.092f6d95.chunk.js.map",
     "runtime-main.js": "/MoaGym/static/js/runtime-main.3bad55c4.js",
     "runtime-main.js.map": "/MoaGym/static/js/runtime-main.3bad55c4.js.map",
     "static/css/2.05750ee5.chunk.css": "/MoaGym/static/css/2.05750ee5.chunk.css",
-    "static/js/2.3cfaf3ce.chunk.js": "/MoaGym/static/js/2.3cfaf3ce.chunk.js",
-    "static/js/2.3cfaf3ce.chunk.js.map": "/MoaGym/static/js/2.3cfaf3ce.chunk.js.map",
+    "static/js/2.a82838ec.chunk.js": "/MoaGym/static/js/2.a82838ec.chunk.js",
+    "static/js/2.a82838ec.chunk.js.map": "/MoaGym/static/js/2.a82838ec.chunk.js.map",
     "static/js/3.e90dda10.chunk.js": "/MoaGym/static/js/3.e90dda10.chunk.js",
     "static/js/3.e90dda10.chunk.js.map": "/MoaGym/static/js/3.e90dda10.chunk.js.map",
     "index.html": "/MoaGym/index.html",
     "static/css/2.05750ee5.chunk.css.map": "/MoaGym/static/css/2.05750ee5.chunk.css.map",
     "static/css/main.25ade143.chunk.css.map": "/MoaGym/static/css/main.25ade143.chunk.css.map",
-    "static/js/2.3cfaf3ce.chunk.js.LICENSE.txt": "/MoaGym/static/js/2.3cfaf3ce.chunk.js.LICENSE.txt",
+    "static/js/2.a82838ec.chunk.js.LICENSE.txt": "/MoaGym/static/js/2.a82838ec.chunk.js.LICENSE.txt",
     "static/media/Brand.444d959a.svg": "/MoaGym/static/media/Brand.444d959a.svg",
     "static/media/Category.6bad8376.svg": "/MoaGym/static/media/Category.6bad8376.svg",
     "static/media/Community.aecaad8d.svg": "/MoaGym/static/media/Community.aecaad8d.svg",
@@ -22,7 +22,6 @@
     "static/media/ProductReviewCntImg.64dde7d4.svg": "/MoaGym/static/media/ProductReviewCntImg.64dde7d4.svg",
     "static/media/ProductReviewStarImg.214d5240.svg": "/MoaGym/static/media/ProductReviewStarImg.214d5240.svg",
     "static/media/Rectangle.e3b8e7dd.svg": "/MoaGym/static/media/Rectangle.e3b8e7dd.svg",
-    "static/media/TitleBar_logo.0ee7b436.svg": "/MoaGym/static/media/TitleBar_logo.0ee7b436.svg",
     "static/media/badge100.6ba72ae5.svg": "/MoaGym/static/media/badge100.6ba72ae5.svg",
     "static/media/badge1000.0bb873e8.svg": "/MoaGym/static/media/badge1000.0bb873e8.svg",
     "static/media/banner2.891c7cee.png": "/MoaGym/static/media/banner2.891c7cee.png",
@@ -33,7 +32,6 @@
     "static/media/category-leggings.df752d3c.png": "/MoaGym/static/media/category-leggings.df752d3c.png",
     "static/media/category-sock.5f39b136.png": "/MoaGym/static/media/category-sock.5f39b136.png",
     "static/media/category-yoga.b699ec48.png": "/MoaGym/static/media/category-yoga.b699ec48.png",
-    "static/media/icn_arrow_right_small.71202588.svg": "/MoaGym/static/media/icn_arrow_right_small.71202588.svg",
     "static/media/leftBtn.a7396d18.svg": "/MoaGym/static/media/leftBtn.a7396d18.svg",
     "static/media/noBrand.15059813.svg": "/MoaGym/static/media/noBrand.15059813.svg",
     "static/media/pickPhotoReview.afa26a67.svg": "/MoaGym/static/media/pickPhotoReview.afa26a67.svg",
@@ -48,8 +46,8 @@
   "entrypoints": [
     "static/js/runtime-main.3bad55c4.js",
     "static/css/2.05750ee5.chunk.css",
-    "static/js/2.3cfaf3ce.chunk.js",
+    "static/js/2.a82838ec.chunk.js",
     "static/css/main.25ade143.chunk.css",
-    "static/js/main.ef15cd97.chunk.js"
+    "static/js/main.092f6d95.chunk.js"
   ]
 }
