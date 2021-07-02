@@ -158,7 +158,7 @@ export const PhotoReviewItemPoint = styled.div`
 
 export const PhotoReviewItemBrand = styled.div`
     position: absolute;
-    width: 15px;
+    width: 80px;
     left: 40px;
     top: 69.96%;
     bottom: 22.87%;
@@ -169,10 +169,12 @@ export const PhotoReviewItemBrand = styled.div`
     font-size: 10px;
     line-height: 16px;
 
-    display: flex;
+    display: block;
     align-items: center;
     letter-spacing: 0.015em;
     text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow: hidden;
 
     color: #3D3D3D;
 `;

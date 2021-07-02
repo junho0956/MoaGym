@@ -77,7 +77,7 @@ export const SlideWrap = styled.div`
     &>.ItemInfoslideLeftBtn{
         position:absolute;
         left:16px;
-        z-index:9999;
+        z-index:9000;
         top:50%;
         transform:translate(0, -50%);
     }
@@ -85,7 +85,7 @@ export const SlideWrap = styled.div`
     &>.ItemInfoslideRightBtn{
         position:absolute;
         right:16px;
-        z-index:9999;
+        z-index:9000;
         top:50%;
         transform:translate(0, -50%);
     }
@@ -240,7 +240,7 @@ export const ItemInfoLine = styled.div`
 
     border: 1px solid #DFDFDF;
 `;
-export const StarRate_Item_ReviewStar = styled.div`
+export const StarRateItemReviewStar = styled.div`
     display:flex;
     flex-direction:row;
     align-items:flex-start;
@@ -280,7 +280,7 @@ export const ProductReview = styled.div`
         padding-top:1px;
     }
 `;
-export const StarRate_ItemDetail = styled.div`
+export const StarRateItemDetail = styled.div`
     position:relative;
     width:312px;
     height:116px;
@@ -300,7 +300,7 @@ export const StarRate_ItemDetail = styled.div`
         align-items: center;
     }
 `;
-export const StarRate_ItemDetail_ReviewCnt = styled.div`
+export const StarRateItemDetailReviewCnt = styled.div`
     position: absolute;
     height: 32px;
     left: 129px;
@@ -313,7 +313,7 @@ export const StarRate_ItemDetail_ReviewCnt = styled.div`
     align-items: center;
     color: #FF701D;
 `;
-export const StarRate_ItemDetail_ReviewPoint = styled.div`
+export const StarRateItemDetailReviewPoint = styled.div`
     position: absolute;
     width: 30px;
     height: 32px;
@@ -329,7 +329,7 @@ export const StarRate_ItemDetail_ReviewPoint = styled.div`
     text-align: center;
     color: #3D3D3D;
 `;
-export const StarRate_ItemDetail_ReviewStar = styled.div`
+export const StarRateItemDetailReviewStar = styled.div`
     position:absolute;
     width:180px;
     height:36px;

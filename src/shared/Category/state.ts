@@ -124,7 +124,7 @@ const reducer = (state = initialState, action:actionType) => {
 
         case changeCategoryType:
             return state.map((item:categoryItem)=> {
-                if(item.id == action.data){
+                if(item.id === action.data){
                     return{
                         ...item,
                         selected: true

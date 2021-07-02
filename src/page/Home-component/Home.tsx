@@ -83,7 +83,7 @@ export const HomePage = () => {
                 <HomeWeekBestTitle>BEST 상품</HomeWeekBestTitle>
                 <MoreBtn onClick={() => {
                     history.push({
-                        pathname: `/weekbest`,
+                        pathname: `/MoaGym/weekbest`,
                         state: weekbest.inweek,
                     })
                 }}>더보기</MoreBtn>
@@ -95,14 +95,14 @@ export const HomePage = () => {
             <PopularCategory>
                 <PopularCategoryTitle>
                     인기 카테고리
-                    <MoreBtn onClick={() => history.push('./category')}>더보기</MoreBtn>
+                    <MoreBtn onClick={() => history.push('/MoaGym/category')}>더보기</MoreBtn>
                 </PopularCategoryTitle>
                 <PopularCategoryItemWrap>
                     {categorys.slice(0,4).map((item, index) => {
                         return(
                             <PopularCategoryItem key={item.id}>
                                 <img src={Pcategory[index]} alt="Homecategory_img" onClick={() => {
-                                    history.push('/categoryDetail');
+                                    history.push('/MoaGym/categoryDetail');
                                     store.dispatch(changeCategory(item.id));
                                 }}/>
                             </PopularCategoryItem>
@@ -124,18 +124,18 @@ export const HomePage = () => {
             <RecommendBrand>
                 <RecommendBrandTitle>
                     추천 국내 브랜드
-                    <MoreBtn onClick={()=>{history.push('./brandlist')}}>더보기</MoreBtn>
+                    <MoreBtn onClick={()=>{history.push('/MoaGym/brandlist')}}>더보기</MoreBtn>
                 </RecommendBrandTitle>
                 <RecommentBrandList>
                     {brandList.map((item:brandDataType) => {
                         return(
                             <RecommendBrandItem key={item.brandId} onClick={() => {
                                 history.push({
-                                    pathname: `brand/${item.brandName}`,
+                                    pathname: `MoaGym/brand/${item.brandName}`,
                                     state:item.brandName,
                                 })
                             }}>
-                                <img src={item.brandImg}/>
+                                <img src={item.brandImg} alt="brandImg"/>
                                 <div>{item.brandName}</div>
                             </RecommendBrandItem>
                         )

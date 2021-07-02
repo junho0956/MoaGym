@@ -17,7 +17,7 @@ export const CategoryPage = () => {
     const categorys = useSelector((state:RootState) => state.Category);
 
     const categoryHandler = (ID:category_Item_Type) => {
-        history.push(`/categoryDetail`);
+        history.push(`/MoaGym/categoryDetail`);
         store.dispatch(changeCategory(ID));
     }
 

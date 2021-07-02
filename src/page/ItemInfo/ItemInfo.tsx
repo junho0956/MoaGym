@@ -17,12 +17,12 @@ import {
     ProductTagWrap,
     ProductTag,
     ProductTagLabel,
-    StarRate_Item_ReviewStar,
+    StarRateItemReviewStar,
     ProductReview,
-    StarRate_ItemDetail,
-    StarRate_ItemDetail_ReviewCnt,
-    StarRate_ItemDetail_ReviewPoint,
-    StarRate_ItemDetail_ReviewStar,
+    StarRateItemDetail,
+    StarRateItemDetailReviewCnt,
+    StarRateItemDetailReviewPoint,
+    StarRateItemDetailReviewStar,
     ArrowUp,
 } from './style';
 import {slider} from '../../common/slider';
@@ -65,8 +65,8 @@ export const ItemInfoPage = () => {
     return(
         <ItemInfoContainer>
             <SlideWrap ref={slideWrap}>
-                <img src={leftBtn} className="ItemInfoslideLeftBtn"/>
-                <img src={rightBtn} className="ItemInfoslideRightBtn"/>
+                <img src={leftBtn} className="ItemInfoslideLeftBtn" alt="slide-leftButton"/>
+                <img src={rightBtn} className="ItemInfoslideRightBtn" alt="slide-rightButton"/>
                 <SlideContainer>
                     <SlideUl>
                         {product.productImageUrl.map((item:{url:string}, index) => {
@@ -91,7 +91,7 @@ export const ItemInfoPage = () => {
                 </ProductTag>}
             </ProductTagWrap>
             <ItemInfoLine />
-            <StarRate_Item_ReviewStar ref={reviewStar}/>
+            <StarRateItemReviewStar ref={reviewStar}/>
             <ProductReview>
                 <span className="ItemInfoProductReviewCnt">{useCommaNumber(product.productReviewCnt)}개</span>
                 <span>의 후기를 모았어요.</span>
@@ -100,12 +100,12 @@ export const ItemInfoPage = () => {
             <img src={pickPhotoReview} className="pickPhotoReview" alt="pickPhotoReview_alt"/>
             <PhotoReview itemList={product.productReview} initSize={4}></PhotoReview>
             <div className="ItemInfoContainerRectangle1"/>
-            <StarRate_ItemDetail>
+            <StarRateItemDetail>
                 <img src={starrateTitle} className="starrateTitle" alt="starrateTitle_alt"/>
-                <StarRate_ItemDetail_ReviewCnt>{useCommaNumber(product.productReviewCnt)}개</StarRate_ItemDetail_ReviewCnt>
-                <StarRate_ItemDetail_ReviewStar ref={reviewStarDetail}/>
-                <StarRate_ItemDetail_ReviewPoint>{product.productReviewPoint}</StarRate_ItemDetail_ReviewPoint>
-            </StarRate_ItemDetail>
+                <StarRateItemDetailReviewCnt>{useCommaNumber(product.productReviewCnt)}개</StarRateItemDetailReviewCnt>
+                <StarRateItemDetailReviewStar ref={reviewStarDetail}/>
+                <StarRateItemDetailReviewPoint>{product.productReviewPoint}</StarRateItemDetailReviewPoint>
+            </StarRateItemDetail>
             <Review reviewState={product.productReview}/>
             <ArrowUp onClick={pageMoveTop}><i className="fas fa-arrow-up"></i></ArrowUp>
         </ItemInfoContainer>

@@ -2,15 +2,19 @@ import {useState, useEffect, useCallback, Fragment} from 'react';
 import styled from 'styled-components';
 import {Provider} from 'react-redux';
 import store from './common/store';
-import Logo from './common/image/TitleBar_logo.png';
+
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
 } from 'react-router-dom';
+
+import {Redirect} from 'react-router';
 
 import {
   GNBMainComponent,
+  HeaderComponent,
+  Modal,
 } from './shared';
 
 import {
@@ -51,34 +55,39 @@ function App(){
     <Root>
       <Provider store={store}>
         <Router>
+          <Redirect from="/" to="/MoaGym" />
           {
             isLoading ? <Loading /> :
             <Fragment > 
               <HeaderContainer>
-                <img src={Logo} alt="titlebar_Logo"/>
+                <HeaderComponent />
               </HeaderContainer>
               <AppContainer id="AppContainer">
+                <Modal/>
                 <Switch>
                   <Route exact path="/MoaGym">
                     <HomePage />
                   </Route>
-                  <Route exact path="/brandlist">
+                  <Route exact path="/MoaGym/brandlist">
                     <BrandListPage />
                   </Route>
-                  <Route path="/brand/:bn">
+                  <Route path="/MoaGym/brand/:bn">
                     <BrandPage />
                   </Route>
-                  <Route exact path="/category">
+                  <Route exact path="/MoaGym/category">
                     <CategoryPage />
                   </Route>
-                  <Route exact path='/weekbest'>
+                  <Route exact path='/MoaGym/weekbest'>
                     <WeekBestPage />
                   </Route>
-                  <Route exact path='/categoryDetail'>
+                  <Route exact path='/MoaGym/categoryDetail'>
                     <CategoryDetailPage />
                   </Route>
-                  <Route exact path='/product'>
+                  <Route path='/MoaGym/product'>
                     <ItemInfoPage />
+                  </Route>
+                  <Route path='/MoaGym/community'>
+                    <Community>미개발상태입니다.😥</Community>
                   </Route>
                 </Switch>
               </AppContainer>
@@ -128,3 +137,12 @@ const AppContainer = styled.div`
     background-color:transparent;
   }
 `
+
+const Community = styled.div`
+  display:flex;
+  width:100%;
+  height:100%;
+  justify-content: center;
+  align-items: center;
+  font-size:1.5rem;
+`;

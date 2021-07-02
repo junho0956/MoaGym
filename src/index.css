@@ -10,10 +10,36 @@ body {
   width:100vw;
   height:100vh;
   overflow: hidden;
-  background:lightgrey;
+  background:#E8EAE6;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  /* margin: 2px; */
+  border-radius: 50%;
+  border: 2px solid black;
+  border-color: black transparent black transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

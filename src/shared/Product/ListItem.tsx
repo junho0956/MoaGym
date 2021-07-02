@@ -55,7 +55,7 @@ function ProductListItem({product}:{product:ItemInfoComponent}){
       item_ref.current?.addEventListener('mouseup', e => {
         if(!move.current){
           move.current = true;
-          history.push('/product');
+          history.push(`/MoaGym/product/${product.productId}`);
           store.dispatch(setProduct(product));
         }
       })
@@ -83,17 +83,17 @@ function ProductListItem({product}:{product:ItemInfoComponent}){
         <React.Fragment>
           {product.productReviewCnt > 99 &&
             (<UpperRight>
-              {product.productReviewCnt > 999 ? <img src={badge1000}/> : <img src={badge100}/>}
+              {product.productReviewCnt > 999 ? <img src={badge1000} alt="badge"/> : <img src={badge100} alt="badge"/>}
             </UpperRight>)
           }
           <BrandTitle>{product.brandName}</BrandTitle>
           <ProductTitle>{product.productName}</ProductTitle>
           <ProductPrice>{price.current}원</ProductPrice>
-          <img src={ProductReviewStarImg} className="ProductReviewStar"/>
+          <img src={ProductReviewStarImg} className="ProductReviewStar" alt="pd-img"/>
           <ProductReviewPoint>{product.productReviewPoint}</ProductReviewPoint>
-          <img src={Rectangle} className="Rectangle"/>
+          <img src={Rectangle} className="Rectangle" alt="pd-img"/>
           <ProductReview>
-            <img src={ProductReviewCntImg}/>
+            <img src={ProductReviewCntImg} alt="pdreview-img"/>
             <ProductReviewCnt>{reviewCnt.current}</ProductReviewCnt>
           </ProductReview>
           <ProductTagWrap>

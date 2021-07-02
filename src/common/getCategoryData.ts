@@ -1,4 +1,3 @@
-
 import { brandDataType, categoryDataType } from "../hook/useInitData";
 
 // 현재 사용가능한 카테고리 => 짐웨어, 상의, 하의, 양말
@@ -30,8 +29,8 @@ export function getCategoryData(brandData : brandDataType[]){
         },
     ];
     
-    brandData.forEach(item => {
-        item.brandData.forEach(item => {
+    brandData.forEach(items => {
+        items.brandData.forEach(item => {
             if(item.category === '짐웨어'){
                 data[0].categoryData.push(item);
             }

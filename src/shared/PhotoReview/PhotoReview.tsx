@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import {applyOnMouse} from '../../common/applyOnMouse';
 import reviewStarImg from './image/reviewStarImg.svg';
 import rectangleImg from './image/Rectangle.svg';
@@ -15,6 +15,8 @@ import {
 } from './style';
 import { nodragImage } from '../../common/nodragImage';
 import { ReviewCardComponent } from '../../interface/Review';
+import store from '../../common/store';
+import { setModal } from '../Modal/state';
 
 const PhotoReviewLoading = () => {
 
@@ -85,12 +87,16 @@ const PhotoReview = ({itemList, initSize}:{itemList:ReviewCardComponent[], initS
         nodragImage();
     },[itemList]);
 
+    const onClickReview = useCallback((item:ReviewCardComponent) => {
+        store.dispatch(setModal(true, item));
+    }, [])
+
     return(
         <PhotoReviewContainer>
             <PhotoReviewUl ref={wrap}>
                 {itemListArray.current.map((item:ReviewCardComponent) => {
                     return(
-                        <PhotoReviewLi key={item.reviewId}>
+                        <PhotoReviewLi key={item.reviewId} onClick={() => onClickReview(item)}>
                             <PhotoReviewItem item={item} />
                         </PhotoReviewLi>
                     )

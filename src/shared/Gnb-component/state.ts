@@ -1,24 +1,21 @@
-import Home from './image/Home.svg';
-import Brand from './image/Brand.svg';
-import Category from './image/Category.svg';
-import Community from './image/Community.svg';
-// import HomeSelected from './image/HomeSelected.svg';
-// import BrandSelected from './image/BrandSelected.svg';
-// import CategorySelected from './image/CategorySelected.svg';
-// import CommunitySelected from './image/CommunitySelected.svg';
+import Home from './image/Home.png';
+import Brand from './image/Brand.png';
+import Category from './image/Category.png';
+import Community from './image/Community.png';
 
 export enum GNB_ITEM_TYPE {
   HOME,
   BRAND,
   CATEGORY,
-  COMMUNITY
+  COMMUNITY,
+  SEARCH,
 }
 
 export interface IGnb {
   id: GNB_ITEM_TYPE;
   label: string;
   link: string;
-  icon: string;
+  icon: string|undefined;
   selected: boolean;
 }
 
@@ -31,23 +28,30 @@ export const GNBItemList: IGnb[] = [
     selected: true
   },
   {
+    id: GNB_ITEM_TYPE.SEARCH,
+    label: '검색',
+    link: 'BsSearch',
+    icon: undefined,
+    selected: false,
+  },
+  {
     id: GNB_ITEM_TYPE.BRAND,
     label: '브랜드',
-    link: '/brandlist',
+    link: '/MoaGym/brandlist',
     icon: Brand,
     selected: false
   },
   {
     id: GNB_ITEM_TYPE.CATEGORY,
     label: '운동복',
-    link: '/category',
+    link: '/MoaGym/category',
     icon: Category,
     selected: false
   },
   {
     id: GNB_ITEM_TYPE.COMMUNITY,
     label: '커뮤니티',
-    link: '/community',
+    link: '/MoaGym/community',
     icon: Community,
     selected: false
   }

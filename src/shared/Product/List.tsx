@@ -38,56 +38,6 @@ const ProductList = (
         }
     }, [verticalProduct]);
 
-    // const checkScroll = useCallback(() => {
-    //     if(elements.current){
-    //         const clientHeight = document.documentElement.clientHeight as number;
-            
-    //         let MidElement;
-    //         if(midIdx.current>6) {
-    //             MidElement = ((elements.current as HTMLDivElement).childNodes[6] as HTMLDivElement).getBoundingClientRect();
-    //         }
-    //         else {
-    //             MidElement = ((elements.current as HTMLDivElement).childNodes[midIdx.current] as HTMLDivElement).getBoundingClientRect();
-    //         }
-            
-    //         const preStart = startIdx.current;
-
-    //         if(MidElement.y < 0){
-    //             midIdx.current += 2;
-                
-    //             // 중간값이 start ~ end 중간값보다 크다면 갱신해줄 필요가 있다
-    //             if((startIdx.current+endIdx.current)/2 <= midIdx.current){
-    //                 startIdx.current += 2;
-    //                 endIdx.current += 2;
-    //             }
-
-    //             if(endIdx.current >= product.length){
-    //                 endIdx.current -= 2;
-    //                 startIdx.current -= 2;
-    //             }
-    //         }
-    //         else if(MidElement.y > clientHeight){
-    //             midIdx.current -= 2;
-                
-    //             // 중간값이 start ~ end 중간값보다 작다면 갱신해줄필요가 있다
-    //             if((startIdx.current+endIdx.current)/2 >= midIdx.current){
-    //                 startIdx.current -= 2;
-    //                 endIdx.current -= 2;
-    //             }
-
-    //             if(startIdx.current < 0){
-    //                 startIdx.current += 2;
-    //                 endIdx.current += 2;
-    //             }
-    //         }
-    //         console.log(startIdx.current, "부터" ,endIdx.current, "까지 가져옵니다");
-    //         if(preStart !== startIdx.current){
-    //             const getProduct = product.slice(startIdx.current, endIdx.current);
-    //             setVerticalProduct(getProduct);
-    //         }
-    //     }
-    // }, [verticalProduct]);
-
     useEffect(() => {
         nodragImage();
         ul && applyOnMouse(ul);
@@ -108,13 +58,6 @@ const ProductList = (
             }
         }
     }, [verticalProduct]);
-
-    // useEffect(() => {
-    //     setVerticalProduct(product.slice(0, 14));
-    //     startIdx.current = 0;
-    //     endIdx.current = 14;
-    //     midIdx.current = 2;
-    // }, [product]);
 
     return(
         direction === PRODUCT_LIST_DIRECTION.VERTICAL ? 

@@ -54,7 +54,7 @@ export const BrandPage = () => {
 
     useEffect(() => {
         setBrandData(brandAllData.filter(item => item.brandName === location.state));
-    },[brandAllData]);
+    },[brandAllData, location]);
 
     function changeTab(tab:string){
         if(tab === 'product') setSelectTab(true);

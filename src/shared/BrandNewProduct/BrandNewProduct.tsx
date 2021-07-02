@@ -61,7 +61,7 @@ const BrandNewProduct = ({products}:{products:ItemInfoComponent[]}) => {
     }, [products]);
 
     const moveItemInfo = (product:ItemInfoComponent) => {
-        history.push('/product');
+        history.push(`/MoaGym/product/${product.productId}`);
         store.dispatch(setProduct(product))
     }
 
@@ -71,8 +71,8 @@ const BrandNewProduct = ({products}:{products:ItemInfoComponent[]}) => {
             <Title>최근 국내 브랜드 신상</Title>
             <MainContainer>
                 <SlideWrap ref={slideWrap}>
-                    <img src = {leftBtn} ref={leftBtnRef} className="BNPleftBtn"/>
-                    <img src = {rightBtn} ref={rightBtnRef} className="BNPrightBtn"/>
+                    <img src = {leftBtn} ref={leftBtnRef} className="BNPleftBtn" alt="newProduct-img"/>
+                    <img src = {rightBtn} ref={rightBtnRef} className="BNPrightBtn" alt="newProduct-img"/>
                     <SlideContainer>
                         <SlideUl>
                             {products.map((product:ItemInfoComponent) => {

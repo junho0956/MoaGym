@@ -37,7 +37,7 @@ function ReviwItem({review}:{review:ReviewCardComponent}){
       else{
           getReviewStarPointNoRef(((reviewRef.current as HTMLDivElement).firstChild as HTMLDivElement).firstChild as HTMLDivElement, review.reviewPoint);   
       }
-    }, [review, loading])
+    }, [reviewImage, loading])
 
     useEffect(() => {
       if(reviewImage.length>0){
@@ -47,13 +47,13 @@ function ReviwItem({review}:{review:ReviewCardComponent}){
           setLoading(false);
         }
       }
-    }, [review]);
+    }, [reviewImage]);
 
     useEffect(() => {
       if(reviewImage.length > 0 && !loading){
         ((reviewRef.current as HTMLDivElement).firstChild as HTMLDivElement).appendChild(rimg.current);
       }
-    }, [loading]);
+    }, [loading, reviewImage]);
 
     return(
       <ReviewComponent ref={reviewRef} image={reviewImage.length}>
@@ -64,7 +64,7 @@ function ReviwItem({review}:{review:ReviewCardComponent}){
             <ReviewInfo>
               <ReviewStarPoint></ReviewStarPoint>
               <div className="reviewProductSizeTitle">{review.reviewOption}</div>
-              <img src={rectangle} className="reviewRectangle"></img>
+              <img src={rectangle} className="reviewRectangle" alt="rectangle-img"></img>
               <div className="reviewDesc">{review.reviewDesc}</div>
               <span className="reviewCreateAt">{review.createdTime.substring(0, 10)}</span>
               <span className="reviewAutorInfo">{review.authorName[0]}***님</span>
@@ -73,7 +73,7 @@ function ReviwItem({review}:{review:ReviewCardComponent}){
         : <ReviewInfo>
             <ReviewStarPoint></ReviewStarPoint>
             <div className="reviewProductSizeTitle">{review.reviewOption}</div>
-            <img src={rectangle} className="reviewRectangle"></img>
+            <img src={rectangle} className="reviewRectangle" alt="rectangle-img"></img>
             <div className="reviewDesc">{review.reviewDesc}</div>
             <span className="reviewCreateAt">{review.createdTime.substring(0, 10)}</span>
             <span className="reviewAutorInfo">{review.authorName[0]}***님</span>

@@ -23,30 +23,30 @@ export interface categoryDataType{
 
 const BACKEND_URL = 'https://goo.moagym.kro.kr:9090';
 
-function useInitData(){
-    const [brandData, setBrandData] = useState<brandDataType[]>([]);
-
-    const getAllData = useCallback(async() => {
-
-        function getBrandList():Promise<brandListType[]>{
-            return fetch(`${BACKEND_URL}/api/v1/allBrands`)
-                    .then(res => {
-                        if(res.status === 200) return res.json();
-                        else throw new Error();
-                    })
-                    .then(res => res)
-                    .catch(() => getBrandList);
-        }
-
-        function getBrandData(brandname:string):Promise<ItemInfoComponent[]>{
-            return fetch(`${BACKEND_URL}/api/v1/itemsByBrandWithReview/${brandname}`)
+export function getBrandList():Promise<brandListType[]>{
+    return fetch(`${BACKEND_URL}/api/v1/allBrands`)
             .then(res => {
                 if(res.status === 200) return res.json();
                 else throw new Error();
             })
             .then(res => res)
-            .catch(() => getBrandData(brandname));
-        }
+            .catch(() => getBrandList);
+}
+
+function getBrandData(brandname:string):Promise<ItemInfoComponent[]>{
+    return fetch(`${BACKEND_URL}/api/v1/itemsByBrandWithReview/${brandname}`)
+    .then(res => {
+        if(res.status === 200) return res.json();
+        else throw new Error();
+    })
+    .then(res => res)
+    .catch(() => getBrandData(brandname));
+}
+
+function useInitData(){
+    const [brandData, setBrandData] = useState<brandDataType[]>([]);
+
+    const getAllData = useCallback(async() => {
 
         let brandList:brandListType[] = await getBrandList();
         
