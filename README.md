@@ -60,6 +60,8 @@ sharedComponent
 
 ### try
 
+현재 AWS 서비스 기간이 끝나 서버가 내려갔습니다..
+부캠끝나고 작업하겠습니다.
 [배포](https://junho0956.github.io/MoaGym/)
 
 ### Team
