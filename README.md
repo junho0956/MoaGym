@@ -3,7 +3,6 @@ MoaGym
 MoaGym 은 무신사 같은 국내 의류 쇼핑몰처럼 헬스, 요가, 필라테스 등의 의류 만을 모아서 보여주자는 의미로 시작한 프로젝트입니다.
 
 - [Stack](#Stack)
-- [structure](#structure)
 - [기록](#commits)
 - [screenshot](#screenshot)
 - [try](#try)
@@ -16,20 +15,6 @@ MoaGym 은 무신사 같은 국내 의류 쇼핑몰처럼 헬스, 요가, 필라
 - typescript
 - react
 - redux
-
-### structure
-
-```
-common
-    - store 및 공통으로 사용할 모듈
-interface
-    - 인터페이스 모듈  
-pageComponent
-    - 페이지 컴포넌트
-sharedComponent
-    - 공통 컴포넌트
-
-```
 
 ### <a name="commits">기록</a>
 
@@ -44,7 +29,7 @@ sharedComponent
 [21.03.10](./Readmes/21_03_10.md)<br>
 [21.03.09](./Readmes/21_03_09.md)<br>
 
-### screenshot
+### 결과물
 
 <div style="display:flex; flex-wrap:wrap;">
     <img src="./src/common/image/img_home1.PNG" style="width:200px; margin:10px;">
@@ -57,6 +42,10 @@ sharedComponent
     <img src="./src/common/image/img_brandPage1.PNG" style="width:200px; margin:10px;">
     <img src="./src/common/image/img_brandPage2.PNG" style="width:200px; margin:10px;">
 </div>
+
+### Design structure
+
+<img src="./src/common/image/figma.PNG">
 
 ### try
 
