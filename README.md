@@ -2,13 +2,13 @@ MoaGym
 ===
 MoaGym 은 무신사 같은 국내 의류 쇼핑몰처럼 헬스, 요가, 필라테스 등의 의류 만을 모아서 보여주자는 의미로 시작한 프로젝트입니다.
 
-- [Stack](#Stack)
+- [Stack](#stacks)
 - [기록](#commits)
-- [screenshot](#screenshot)
+- [결과물](#results)
 - [try](#try)
-- [Team](#Team)
+- [Team](#team)
 
-### Stack
+### <a name="stacks">Stacks</a>
 
 - typescript
 - react
@@ -28,9 +28,9 @@ MoaGym 은 무신사 같은 국내 의류 쇼핑몰처럼 헬스, 요가, 필라
 [21.03.10](./Readmes/21_03_10.md)<br>
 [21.03.09](./Readmes/21_03_09.md)<br>
 
-### 결과물
+### <a name="results">결과물</a>
 
-<div style="display:flex; flex-wrap:wrap;">
+<div style="display:grid; grid-template-columns: repeat(3, 1fr);">
     <img src="./src/common/image/img_home1.PNG" style="width:200px; margin:10px;">
     <img src="./src/common/image/img_home2.PNG" style="width:200px; margin:10px;">
     <img src="./src/common/image/category1.PNG" style="width:200px; margin:10px;">
@@ -51,7 +51,7 @@ MoaGym 은 무신사 같은 국내 의류 쇼핑몰처럼 헬스, 요가, 필라
 서버가 만료되어 다음주 이내로 재배포할 예정입니다.
 [배포](https://junho0956.github.io/MoaGym/)
 
-### Team
+### <a name="team">Team</a>
 
 |Name|Part|
 |:---:|:---:|
