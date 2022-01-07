@@ -10,11 +10,10 @@ MoaGym 은 무신사 같은 국내 의류 쇼핑몰처럼 헬스, 요가, 필라
 
 ### Stack
 
-- html
-- styled-component
 - typescript
 - react
 - redux
+- styled-component
 
 ### <a name="commits">기록</a>
 
@@ -49,8 +48,7 @@ MoaGym 은 무신사 같은 국내 의류 쇼핑몰처럼 헬스, 요가, 필라
 
 ### try
 
-현재 AWS 서비스 기간이 끝나 서버가 내려갔습니다..
-곧 서버를 다시 올릴 예정입니다.
+서버가 만료되어 다음주 이내로 재배포할 예정입니다.
 [배포](https://junho0956.github.io/MoaGym/)
 
 ### Team
