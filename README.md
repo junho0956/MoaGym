@@ -30,7 +30,7 @@ MoaGym 은 무신사 같은 국내 의류 쇼핑몰처럼 헬스, 요가, 필라
 
 ### <a name="results">결과물</a>
 
-<div style="display:grid; grid-template-columns: repeat(3, 1fr);">
+<div style="display: grid; grid-template-columns: repeat(3, 1fr);">
     <img src="./src/common/image/img_home1.PNG" style="width:200px; margin:10px;">
     <img src="./src/common/image/img_home2.PNG" style="width:200px; margin:10px;">
     <img src="./src/common/image/category1.PNG" style="width:200px; margin:10px;">
